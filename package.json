@@ -1,0 +1,21 @@
+{
+  "name": "tr-ck-r",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Jighdan/tr-ck-r.git",
+  "author": "Reinny <reynsth@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack --watch",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "dart-sass": "^1.25.0",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
