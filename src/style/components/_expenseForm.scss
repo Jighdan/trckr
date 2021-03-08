@@ -13,7 +13,7 @@
 
 	.input-box {
 		margin-bottom: 0.5rem;
-		padding-left: 0.75rem;
+		padding: 0.25rem 0.75rem;
 		display: flex;
 		align-items: center;
 		background-color: $color-white;
@@ -22,25 +22,34 @@
 		overflow: hidden;
 
 		.prefix {
+			margin-right: 0.15rem;
 			font-weight: 300;
 			color: $color-gray-dark;
 		}
 
-		input {
+		input,
+		select {
 			padding: 0.5rem 0.75rem;
-			flex-grow: 1;
-			font-size: 1.25rem;
 			font-weight: bold;
 			color: $color-black;
-			background-color: inherit;
 			border: none;
 			outline: none;
+			background-color: inherit;
+			border-radius: 5px;
+			cursor: pointer;
 
-			&:focus,
-			:active {
-				background-color: inherit;
+			&:active,
+			&:focus {
+				background-color: $color-white-light;
+				outline: none;
 				border: none;
+				border-width: none;
 			}
+		}
+
+		input {
+			flex-grow: 1;
+			color: $color-black;
 		}
 	}
 }

@@ -17,7 +17,6 @@ export default class ExpenseFormCategory extends Component {
 		// Setting up the option element attributes
 		element.setAttribute("required", "true");
 		element.setAttribute("value", id);
-		element.setAttribute("data-id", id);
 		element.innerText = name;
 
 		// Check if the option is the default one
