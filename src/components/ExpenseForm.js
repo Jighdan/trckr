@@ -1,5 +1,6 @@
 import Component from "./Component.js";
 import store from "../store/index";
+import ExpenseFormCategory from "./ExpenseFormCategory";
 
 export default class ExpenseForm extends Component {
 	constructor() {
@@ -10,13 +11,13 @@ export default class ExpenseForm extends Component {
 		const legend = document.createElement("legend");
 		legend.innerText = "New Expense";
 
-		// Setting up the form input
-		this.input = document.createElement("input");
-		this.input.setAttribute("type", "number");
-		this.input.setAttribute("aria-label", "Expense Amount");
-		this.input.setAttribute("name", "expenseValue");
-		this.input.setAttribute("required", "true");
-		this.input.setAttribute("step", "any");
+		// Setting up the form amount input
+		this.inputAmount = document.createElement("input");
+		this.inputAmount.setAttribute("type", "number");
+		this.inputAmount.setAttribute("aria-label", "Expense Amount");
+		this.inputAmount.setAttribute("name", "expenseAmount");
+		this.inputAmount.setAttribute("required", "true");
+		this.inputAmount.setAttribute("step", "any");
 
 		// Setting up the form submit button
 		this.submitButton = document.createElement("button");
@@ -29,10 +30,13 @@ export default class ExpenseForm extends Component {
 		prefix.classList.add("prefix");
 		prefix.innerText = "$";
 
+		// Setting up the category selector
+		this.inputCategory = new ExpenseFormCategory();
+
 		// Wrap the prefix and the input altogether
 		const inputBox = document.createElement("div");
 		inputBox.classList.add("input-box");
-		inputBox.append(prefix, this.input);
+		inputBox.append(prefix, this.inputAmount, this.inputCategory.render());
 
 		// Wrap the element
 		this.element.classList.add("expense-form");
@@ -42,13 +46,14 @@ export default class ExpenseForm extends Component {
 	onSubmit(event) {
 		event.preventDefault();
 
-		const { valueAsNumber } = this.input;
+		const amount = this.inputAmount.valueAsNumber;
+		const category = this.inputCategory.value;
 
-		if (valueAsNumber && valueAsNumber > 0) {
+		if (amount && amount > 0) {
 			// Clear the input value
-			this.input.value = "";
+			this.inputAmount.value = "";
 
-			store.commit("addExpense", { amount: valueAsNumber });
+			store.commit("addExpense", { amount, category });
 		}
 	}
 

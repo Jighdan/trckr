@@ -2,10 +2,11 @@ import generateId from "../library/idGenerator";
 import getRandomColor from "../library/colorGenerator";
 
 export default {
-	addExpense(state, { amount }) {
+	addExpense(state, { amount, categoryId }) {
 		state.expenses.push({
 			id: generateId(),
-			amount: amount,
+			amount,
+			categoryId,
 			dateAdded: new Date(),
 		});
 	},
