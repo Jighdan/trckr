@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	min-height: 100vh;
+	font-family: $font-face;
+	background-color: $color-white;
+	scroll-behavior: smooth;
+}
+
+body {
+	min-height: 100%;
+	width: 100%;
+}
+
+#root {
+	display: grid;
+	grid-template-rows: repeat(auto-fill, auto);
+	justify-content: center;
+	grid-gap: 1rem;
+	gap: 1rem;
+}
