@@ -1,9 +1,10 @@
 import EventObserver from "../library/eventObserver";
 
 export default class Store {
-	constructor({ state, mutations, getters }) {
+	constructor({ state, mutations, actions, getters }) {
 		this.state = state || {};
 		this.mutations = mutations || {};
+		this.actions = actions || {};
 		this.getters = getters || {};
 		this.events = new EventObserver();
 	}
@@ -19,6 +20,15 @@ export default class Store {
 		if (notifyEvents) {
 			this.events.notify("stateChange", this.state);
 		}
+	}
+
+	dispatch(actionKey, payload) {
+		if (typeof this.actions[actionKey] !== "function") {
+			console.error(`Action "${actionKey}" doesn't exist`);
+			return false;
+		}
+
+		this.actions[actionKey](this, payload);
 	}
 
 	getter(getterKey) {
