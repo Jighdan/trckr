@@ -21,12 +21,12 @@ export default class Store {
 		}
 	}
 
-	getter(getterName) {
-		if (typeof this.getters[getterName] !== "function") {
-			console.error(`Getter "${getterName}" doesn't exist`);
+	getter(getterKey) {
+		if (typeof this.getters[getterKey] !== "function") {
+			console.error(`Getter "${getterKey}" doesn't exist`);
 			return false;
 		}
 
-		return this.getters[getterName](this.state);
+		return this.getters[getterKey](this.state);
 	}
 }
