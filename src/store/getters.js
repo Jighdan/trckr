@@ -10,4 +10,8 @@ export default {
 
 		return "$0.00";
 	},
+
+	getSortedCategories(state) {
+		return state.categories.sort((a, b) => a.name.localeCompare(b.name));
+	},
 };

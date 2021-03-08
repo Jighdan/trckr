@@ -20,15 +20,20 @@ export default class ExpenseFormCategory extends Component {
 		element.setAttribute("data-id", id);
 		element.innerText = name;
 
+		// Check if the option is the default one
+		if (name === "Other") {
+			element.setAttribute("selected", "true");
+		}
+
 		return element;
 	}
 
 	render() {
 		this.element.innerHTML = "";
 
-		const options = store.state.categories.map((category) =>
-			this.generateOptionElement(category)
-		);
+		const options = store
+			.getter("getSortedCategories")
+			.map((category) => this.generateOptionElement(category));
 		this.element.append(...options);
 
 		return this.element;
