@@ -1,21 +1,25 @@
 {
   "name": "tr-ck-r",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "https://github.com/Jighdan/tr-ck-r.git",
   "author": "Reinny <reynsth@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "webpack --watch",
     "build": "webpack",
+    "test": "jest",
     "dev:scss": "dart-sass ./src/style/index.scss ./build/style.css --no-source-map --watch",
     "build:scss": "dart-sass ./src/style/index.scss ./build/style.css"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/node": "^7.13.0",
+    "@babel/preset-env": "^7.13.9",
     "dart-sass": "^1.25.0",
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
+    "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0"
