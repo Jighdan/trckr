@@ -6,29 +6,37 @@ export default class ExpenseForm extends Component {
 		super({ store, element: document.createElement("form") });
 		this.hasRendered = false;
 
-		// Setting up the form label
-		this.label = document.createElement("label");
-		this.label.innerText = "New Expense";
+		// Setting up the form legend
+		const legend = document.createElement("legend");
+		legend.innerText = "New Expense";
 
 		// Setting up the form input
 		this.input = document.createElement("input");
 		this.input.setAttribute("type", "number");
+		this.input.setAttribute("aria-label", "Expense Amount");
 		this.input.setAttribute("name", "expenseValue");
 		this.input.setAttribute("required", "true");
-		this.input.setAttribute("step", "0.01");
+		this.input.setAttribute("step", "any");
 
 		// Setting up the form submit button
 		this.submitButton = document.createElement("button");
+		this.submitButton.classList.add("button");
 		this.submitButton.setAttribute("type", "submit");
 		this.submitButton.innerText = "Add Expense";
 
-		// Wrapping the label and input altogether
-		const formControl = document.createElement("div");
-		formControl.classList.add("expense-form-control");
-		formControl.append(this.label, this.input);
+		// Setting up a prefix for the input
+		const prefix = document.createElement("span");
+		prefix.classList.add("prefix");
+		prefix.innerText = "$";
+
+		// Wrap the prefix and the input altogether
+		const inputBox = document.createElement("div");
+		inputBox.classList.add("input-box");
+		inputBox.append(prefix, this.input);
 
 		// Wrap the element
-		this.element.append(formControl, this.submitButton);
+		this.element.classList.add("expense-form");
+		this.element.append(legend, inputBox, this.submitButton);
 	}
 
 	onSubmit(event) {

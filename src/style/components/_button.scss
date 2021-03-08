@@ -1,0 +1,22 @@
+.button {
+	padding: 0.6rem 1.2rem;
+
+	color: $color-white;
+	background-color: $color-black;
+
+	font-size: 1rem;
+	font-weight: bold;
+
+	border: none;
+	border-width: 0.5px;
+	border-radius: 0.5rem;
+
+	cursor: pointer;
+
+	&[disabled="true"] {
+		color: $color-gray-dark;
+		background-color: $color-gray-light;
+
+		cursor: not-allowed;
+	}
+}

@@ -1,0 +1,46 @@
+.expense-form {
+	max-width: 500px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	legend {
+		justify-self: start;
+		font-size: 0.85em;
+		font-weight: bold;
+		color: $color-gray-dark;
+	}
+
+	.input-box {
+		margin-bottom: 0.5rem;
+		padding-left: 0.75rem;
+		display: flex;
+		align-items: center;
+		background-color: $color-white;
+		border: 1px solid $color-gray-dark;
+		border-radius: 0.25rem;
+		overflow: hidden;
+
+		.prefix {
+			font-weight: 300;
+			color: $color-gray-dark;
+		}
+
+		input {
+			padding: 0.5rem 0.75rem;
+			flex-grow: 1;
+			font-size: 1.25rem;
+			font-weight: bold;
+			color: $color-black;
+			background-color: inherit;
+			border: none;
+			outline: none;
+
+			&:focus,
+			:active {
+				background-color: inherit;
+				border: none;
+			}
+		}
+	}
+}
