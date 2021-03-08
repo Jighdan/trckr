@@ -14,6 +14,7 @@ export default class ExpenseForm extends Component {
 		this.input = document.createElement("input");
 		this.input.setAttribute("type", "number");
 		this.input.setAttribute("name", "expenseValue");
+		this.input.setAttribute("required", "true");
 		this.input.setAttribute("step", "0.01");
 
 		// Setting up the form submit button
@@ -33,14 +34,13 @@ export default class ExpenseForm extends Component {
 	onSubmit(event) {
 		event.preventDefault();
 
-		const { value } = this.input;
-		const amount = parseFloat(value);
+		const { valueAsNumber } = this.input;
 
-		if (amount && amount > 0.0) {
+		if (valueAsNumber && valueAsNumber > 0) {
 			// Clear the input value
 			this.input.value = "";
 
-			store.commit("addExpense", { amount: amount.toFixed(2) });
+			store.commit("addExpense", { amount: valueAsNumber });
 		}
 	}
 
