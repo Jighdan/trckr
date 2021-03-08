@@ -1,4 +1,4 @@
-const stateSample = {
+const sampleState = {
 	expenses: [
 		{
 			id: "123",
@@ -18,4 +18,4 @@ const stateSample = {
 	],
 };
 
-export default stateSample;
+export default sampleState;

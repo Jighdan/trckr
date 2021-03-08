@@ -11,6 +11,25 @@ export default {
 		return "$0.00";
 	},
 
+	composedExpensesByDate(state) {
+		let composedExpensesByDate = {};
+		const availableDates = new Array(
+			...new Set(
+				state.expenses.map(({ dateAdded }) => dateAdded.toDateString())
+			)
+		);
+
+		availableDates.forEach((date) => {
+			const expensesByDate = state.expenses.filter(
+				({ dateAdded }) => dateAdded.toDateString() == date
+			);
+
+			composedExpensesByDate[`${date}`] = expensesByDate;
+		});
+
+		return composedExpensesByDate;
+	},
+
 	getSortedCategories(state) {
 		return state.categories.sort((a, b) => a.name.localeCompare(b.name));
 	},
