@@ -6,6 +6,7 @@
 	}
 
 	&-container {
+		padding-left: 0.25rem;
 		display: grid;
 		grid-template-rows: repeat(auto-fit, max-content);
 		grid-gap: 0.15rem;
