@@ -1,0 +1,15 @@
+// https://www.typescriptlang.org/tsconfig
+
+{
+	"compilerOptions": {
+		"outDir": "./build/",
+		"module": "ES6",
+		"target": "es5",
+		"allowJs": true,
+
+		// Rules
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true
+	},
+	"include": ["./src/index.ts", "./src/components/**/*", "./src/library/**/*", "./src/store/**/*"]
+}
