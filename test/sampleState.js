@@ -16,6 +16,10 @@ const sampleState = {
 			dateAdded: new Date(),
 		},
 	],
+	categories: [
+		{ id: "241g3", name: "Sample Category", color: "#ffffff" },
+		{ id: "24g41c", name: "Sample Category", color: "#000000" },
+	],
 };
 
 export default sampleState;

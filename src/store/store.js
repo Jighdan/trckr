@@ -34,12 +34,12 @@ export default class Store {
 		this.actions[actionKey](this, payload);
 	}
 
-	getter(getterKey) {
+	getter(getterKey, payload) {
 		if (typeof this.getters[getterKey] !== "function") {
 			console.error(`Getter "${getterKey}" doesn't exist`);
 			return false;
 		}
 
-		return this.getters[getterKey](this.state);
+		return this.getters[getterKey](this.state, payload);
 	}
 }

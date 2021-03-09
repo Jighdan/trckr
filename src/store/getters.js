@@ -35,4 +35,8 @@ export default {
 	getSortedCategories(state) {
 		return state.categories.sort((a, b) => a.name.localeCompare(b.name));
 	},
+
+	getCategoryById(state, { categoryId }) {
+		return state.categories.find((category) => category.id === categoryId);
+	},
 };

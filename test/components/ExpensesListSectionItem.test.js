@@ -3,9 +3,11 @@ import sampleState from "../sampleState";
 
 describe("ExpensesListSectionItem", () => {
 	const sampleExpense = sampleState.expenses[1];
-	const instanceOfExpensesListSectionItem = new ExpensesListSectionItem(
-		sampleExpense
-	);
+	const sampleCategory = sampleState.categories[0];
+	const instanceOfExpensesListSectionItem = new ExpensesListSectionItem({
+		expense: sampleExpense,
+		category: sampleCategory,
+	});
 	const renderedExpensesListSectionItem = instanceOfExpensesListSectionItem.render();
 
 	test("Returns an article element", () => {
