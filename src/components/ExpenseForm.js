@@ -31,12 +31,12 @@ export default class ExpenseForm extends Component {
 		prefix.innerText = "$";
 
 		// Setting up the category selector
-		this.inputCategory = new ExpenseFormCategory();
+		this.inputCategory = new ExpenseFormCategory().render();
 
 		// Wrap the prefix and the input altogether
 		const inputBox = document.createElement("div");
 		inputBox.classList.add("input-box");
-		inputBox.append(prefix, this.inputAmount, this.inputCategory.render());
+		inputBox.append(prefix, this.inputAmount, this.inputCategory);
 
 		// Wrap the element
 		this.element.classList.add("expense-form");
