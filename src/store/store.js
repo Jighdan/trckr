@@ -17,6 +17,9 @@ export default class Store {
 
 		this.mutations[mutationKey](this.state, payload);
 
+		// Store the current state
+		this.actions["setLocalStorageState"](this);
+
 		if (notifyEvents) {
 			this.events.notify("stateChange", this.state);
 		}

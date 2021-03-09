@@ -11,17 +11,19 @@ export default {
 		return "$0.00";
 	},
 
-	composedExpensesByDate(state) {
+	getExpensesByDate(state) {
 		let composedExpensesByDate = {};
 		const availableDates = new Array(
 			...new Set(
-				state.expenses.map(({ dateAdded }) => dateAdded.toDateString())
+				state.expenses.map(({ dateAdded }) =>
+					new Date(dateAdded).toDateString()
+				)
 			)
 		);
 
 		availableDates.forEach((date) => {
 			const expensesByDate = state.expenses.filter(
-				({ dateAdded }) => dateAdded.toDateString() == date
+				({ dateAdded }) => new Date(dateAdded).toDateString() == date
 			);
 
 			composedExpensesByDate[`${date}`] = expensesByDate;

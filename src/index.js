@@ -6,7 +6,7 @@ import ExpensesTotal from "./components/ExpensesTotal";
 const root = document.getElementById("root");
 
 // Initialize store default states
-store.dispatch("setInitialCategories");
+store.dispatch("setInitialState");
 
 // Initialize components instances
 const instanceOfExpenseForm = new ExpenseForm();
