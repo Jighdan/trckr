@@ -12,7 +12,7 @@ export default class ExpensesList extends Component {
 			// Clear the element content
 			this.element.innerHTML = "";
 
-			const expensesByDate = store.getter("composedExpensesByDate");
+			const expensesByDate = store.getter("getExpensesByDate");
 
 			Object.keys(expensesByDate).forEach((date) => {
 				const expenseSectionElement = new ExpensesListSection({

@@ -1,4 +1,13 @@
 .expenses-total {
-	font-size: 2rem;
 	text-align: center;
+
+	h2 {
+		font-size: $font-xl;
+	}
+
+	p {
+		color: $color-gray-dark;
+		font-size: $font-sm;
+		font-weight: light;
+	}
 }

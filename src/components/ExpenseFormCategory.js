@@ -11,7 +11,7 @@ export default class ExpenseFormCategory extends Component {
 	}
 
 	generateOptionElement(category) {
-		const { id, name, color } = category;
+		const { id, name } = category;
 		const element = document.createElement("option");
 
 		// Setting up the option element attributes

@@ -1,5 +1,5 @@
 import EventObserver from "../../src/library/eventObserver";
-import stateSample from "../stateSample";
+import sampleState from "../sampleState";
 
 describe("EventObserver", () => {
 	const instanceOfEventObserver = new EventObserver();
@@ -25,16 +25,16 @@ describe("EventObserver", () => {
 	test("Notify valid Events", () => {
 		const validNotification = instanceOfEventObserver.notify(
 			"validEvent",
-			stateSample
+			sampleState
 		);
 
-		expect(validNotification[0]).toEqual(sampleCallback(stateSample));
+		expect(validNotification[0]).toEqual(sampleCallback(sampleState));
 	});
 
 	test("Doesn't notify events when the event doesn't exists", () => {
 		const fakeNotification = instanceOfEventObserver.notify(
 			"fakeEvent",
-			stateSample
+			sampleState
 		);
 
 		expect(typeof fakeNotification).toBe("object");

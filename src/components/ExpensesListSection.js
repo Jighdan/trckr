@@ -1,9 +1,10 @@
 import Component from "./Component";
+import store from "../store/index";
 import ExpensesListSectionItem from "./ExpensesListSectionItem";
 
 export default class ExpensesListSection extends Component {
 	constructor({ date, expenses }) {
-		super({ element: document.createElement("section") });
+		super({ static: true, element: document.createElement("section") });
 
 		// Setting up section attributes
 		this.element.classList.add("expenses-list-section");
@@ -11,14 +12,21 @@ export default class ExpensesListSection extends Component {
 
 		// Setting up the section title
 		const title = document.createElement("h2");
-		title.classList.add("expenses-list-section-title");
+		title.classList.add("expenses-list-section-date");
 		title.innerText = date;
 
 		// Setting up the section expenses
 		const expensesContainer = document.createElement("div");
 		expensesContainer.classList.add("expenses-list-section-container");
 		for (let expense of expenses) {
-			const expenseElement = new ExpensesListSectionItem(expense);
+			const expenseCategory = store.getter("getCategoryById", {
+				categoryId: expense.categoryId,
+			});
+
+			const expenseElement = new ExpensesListSectionItem({
+				expense,
+				category: expenseCategory,
+			});
 			expensesContainer.appendChild(expenseElement.render());
 		}
 

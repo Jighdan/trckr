@@ -11,17 +11,19 @@ export default {
 		return "$0.00";
 	},
 
-	composedExpensesByDate(state) {
+	getExpensesByDate(state) {
 		let composedExpensesByDate = {};
 		const availableDates = new Array(
 			...new Set(
-				state.expenses.map(({ dateAdded }) => dateAdded.toDateString())
+				state.expenses.map(({ dateAdded }) =>
+					new Date(dateAdded).toDateString()
+				)
 			)
 		);
 
 		availableDates.forEach((date) => {
 			const expensesByDate = state.expenses.filter(
-				({ dateAdded }) => dateAdded.toDateString() == date
+				({ dateAdded }) => new Date(dateAdded).toDateString() == date
 			);
 
 			composedExpensesByDate[`${date}`] = expensesByDate;
@@ -32,5 +34,9 @@ export default {
 
 	getSortedCategories(state) {
 		return state.categories.sort((a, b) => a.name.localeCompare(b.name));
+	},
+
+	getCategoryById(state, { categoryId }) {
+		return state.categories.find((category) => category.id === categoryId);
 	},
 };
