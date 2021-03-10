@@ -6,18 +6,20 @@ module.exports = {
 		filename: "script.js",
 		path: path.resolve(__dirname, "build"),
 	},
-	devtool: "source-map",
+	devtool: "inline-source-map",
 	mode: process.env.NODE_ENV === "production" ? "production" : "development",
 
 	module: {
 		rules: [
 			{
 				test: /\.tsx?$/,
-				loader: "ts-loader",
+				use: "ts-loader",
+				exclude: /node_modules/,
 			},
 			{
 				test: /\.js$/,
-				loader: "source-map-loader",
+				use: "source-map-loader",
+				exclude: /node_modules/,
 			},
 		],
 	},

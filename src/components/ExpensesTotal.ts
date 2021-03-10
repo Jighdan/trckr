@@ -1,9 +1,11 @@
-import Component from "./Component.js";
-import store from "../store/index";
+import { Component } from "./Component";
+import { store } from "../store/index";
 
-export default class ExpensesTotal extends Component {
+class ExpensesTotal extends Component {
+	amountElement: HTMLHeadingElement
+
 	constructor() {
-		super({ store, element: document.createElement("section") });
+		super(document.createElement("section"), store);
 		this.element.classList.add("expenses-total");
 
 		// Setting up the amount element
@@ -24,3 +26,5 @@ export default class ExpensesTotal extends Component {
 		return this.element;
 	}
 }
+
+export { ExpensesTotal };

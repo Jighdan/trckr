@@ -1,16 +1,17 @@
-import Component from "./Component.js";
-import store from "../store/index";
+import { Component } from "./Component";
+import { store } from "../store/index";
+import { Category } from "../models/index";
 
-export default class ExpenseFormCategory extends Component {
+class ExpenseFormCategory extends Component {
 	constructor() {
-		super({ store, element: document.createElement("select") });
+		super(document.createElement("select"), store);
 
 		// Setting up the select element attributes
 		this.element.setAttribute("aria-label", "Expense Category");
 		this.element.setAttribute("name", "expenseCategory");
 	}
 
-	generateOptionElement(category) {
+	generateOptionElement(category: Category): HTMLOptionElement {
 		const { id, name } = category;
 		const element = document.createElement("option");
 
@@ -32,9 +33,11 @@ export default class ExpenseFormCategory extends Component {
 
 		const options = store
 			.getter("getSortedCategories")
-			.map((category) => this.generateOptionElement(category));
+			.map((category: Category) => this.generateOptionElement(category));
 		this.element.append(...options);
 
 		return this.element;
 	}
 }
+
+export { ExpenseFormCategory };

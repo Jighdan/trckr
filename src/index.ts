@@ -1,9 +1,9 @@
-import store from "./store/index";
-import ExpenseForm from "./components/ExpenseForm";
-import ExpensesList from "./components/ExpensesList";
-import ExpensesTotal from "./components/ExpensesTotal";
+import { store } from "./store/index";
+import { ExpenseForm } from "./components/ExpenseForm";
+import { ExpensesList } from "./components/ExpensesList";
+import { ExpensesTotal } from "./components/ExpensesTotal";
 
-const root = document.getElementById("root");
+const root: HTMLElement = document.getElementById("root");
 
 // Initialize store default states
 store.dispatch("setInitialState");
