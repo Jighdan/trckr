@@ -1,5 +1,5 @@
 import { store } from "./store/index";
-import { ExpenseForm } from "./components/ExpenseForm";
+import { ExpenseForm } from "./components/ExpenseForm/index";
 import { ExpensesList } from "./components/ExpensesList";
 import { ExpensesTotal } from "./components/ExpensesTotal";
 

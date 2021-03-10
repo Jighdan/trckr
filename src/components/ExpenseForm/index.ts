@@ -1,5 +1,6 @@
-import { Component } from "./Component";
-import { store } from "../store/index";
+import { Component } from "../Component";
+import { store } from "../../store/index";
+import { ExpenseFormAmount } from "./ExpenseFormAmount";
 import { ExpenseFormCategory } from "./ExpenseFormCategory";
 
 class ExpenseForm extends Component {
@@ -10,22 +11,14 @@ class ExpenseForm extends Component {
 
 	constructor() {
 		super(document.createElement("form"), store, true);
-		this.hasRendered = false;
 
 		// Setting up the form legend
 		const legend = document.createElement("legend");
 		legend.innerText = "New Expense";
 
-		// Setting up the form amount input
-		this.inputAmount = document.createElement("input");
-		this.inputAmount.setAttribute("type", "number");
-		this.inputAmount.setAttribute("aria-label", "Expense Amount");
-		this.inputAmount.setAttribute("name", "expenseAmount");
-		this.inputAmount.setAttribute("required", "true");
-		this.inputAmount.setAttribute("step", "any");
-
-		// Setting up the category selector
-		this.inputCategory = new ExpenseFormCategory().render();
+		// Setting up the form inputs
+		this.inputAmount = ExpenseFormAmount();
+		this.inputCategory = ExpenseFormCategory(store.getter("getSortedCategories"));
 
 		// Setting up the form submit button
 		this.submitButton = document.createElement("button");
@@ -67,11 +60,7 @@ class ExpenseForm extends Component {
 	}
 
 	render() {
-		if (!this.hasRendered) {
-			this.setEvents();
-		}
-
-		this.hasRendered = true;
+		this.setEvents();
 		return this.element;
 	}
 }
