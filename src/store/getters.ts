@@ -35,7 +35,6 @@ const getters = {
 	},
 
 	getComposedSubCategoryByExpenseCategory(state: State, { expenseCategory }: { expenseCategory: ExpenseCategory }): ComposedSubCategory {
-		console.log(expenseCategory)
 		const subCategory: SubCategory = state.categories[expenseCategory.name].subCategories.find(subCategory => (
 			subCategory.id === expenseCategory.subCategoryId
 		));
