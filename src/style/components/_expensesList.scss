@@ -15,32 +15,4 @@
 		grid-gap: 0.15rem;
 		gap: 0.15rem;
 	}
-
-	&-item {
-		margin-top: 0.4rem;
-		display: flex;
-		align-items: center;
-
-		.category-shape {
-			margin-right: 0.5rem;
-			width: $font-lg;
-			height: $font-lg;
-			border-width: 5px;
-			border-style: solid;
-			border-radius: 50%;
-		}
-
-		.expense-item-body {
-			.title {
-				font-size: $font-lg;
-				font-weight: bold;
-			}
-
-			.time {
-				color: $color-gray-dark;
-				font-size: $font-sm;
-				font-weight: lighter;
-			}
-		}
-	}
 }

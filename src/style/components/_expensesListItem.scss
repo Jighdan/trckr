@@ -1,0 +1,48 @@
+.expenses-list-item {
+	margin-top: 0.4rem;
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+
+	&-header {
+		.expenses-list-item-category-shape {
+			width: $font-lg;
+			height: $font-lg;
+			margin-right: 0.5rem;
+			border-width: 5px;
+			border-style: solid;
+			border-radius: 50%;
+
+			&:hover {
+				background-color: currentColor;
+			}
+		}
+	}
+
+	&-body {
+		.expenses-list-item-amount {
+			font-size: $font-lg;
+			font-weight: bold;
+		}
+	}
+
+	&-footer {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+
+		.expenses-list-item-time {
+			color: $color-gray-dark;
+			font-size: $font-sm;
+			font-weight: lighter;
+			font-style: italic;
+		}
+
+		.expenses-list-item-category-title {
+			color: $color-gray-dark;
+			font-size: $font-sm;
+			font-weight: bold;
+			text-decoration: underline;
+		}
+	}
+}

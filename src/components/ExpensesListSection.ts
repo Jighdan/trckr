@@ -1,7 +1,7 @@
 import { Component } from "./Component";
 import { store } from "../store/index";
 import { Expense } from "../models/index";
-import { ExpensesListSectionItem } from "./ExpensesListSectionItem";
+import { ExpensesListItem } from "./ExpensesListItem/index";
 
 class ExpensesListSection extends Component {
 	constructor(date: string, expenses: Array<Expense>) {
@@ -22,7 +22,7 @@ class ExpensesListSection extends Component {
 		for (let expense of expenses) {
 			const category = store.getter("getCategoryById", { categoryId: expense.categoryId});
 
-			const expenseElement = new ExpensesListSectionItem(
+			const expenseElement = new ExpensesListItem(
 				expense,
 				category,
 			);
