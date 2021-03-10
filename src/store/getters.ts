@@ -22,10 +22,13 @@ const getters = {
 
 		arrayOfUniqueDates.forEach((date) => {
 			const expensesByDate = state.expenses.filter(
-				({ dateAdded }) => new Date(dateAdded).toDateString() == date
+				({ dateAdded }) => new Date(dateAdded).toDateString() === date
 			);
+			const sortedExpensesByDate = expensesByDate.sort((a, b): any => {
+				new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
+			});
 
-			composedExpensesByDate[`${date}`] = expensesByDate;
+			composedExpensesByDate[`${date}`] = sortedExpensesByDate;
 		});
 
 		return composedExpensesByDate;
