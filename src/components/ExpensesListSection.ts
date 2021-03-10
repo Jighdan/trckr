@@ -21,7 +21,6 @@ class ExpensesListSection extends Component {
 		expensesContainer.classList.add("expenses-list-section-container");
 		for (let expense of expenses) {
 			const category = store.getter("getCategoryById", { categoryId: expense.categoryId});
-			console.log(category)
 
 			const expenseElement = new ExpensesListSectionItem(
 				expense,
