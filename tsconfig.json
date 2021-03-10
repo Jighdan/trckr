@@ -1,0 +1,25 @@
+// https://www.typescriptlang.org/tsconfig
+{
+	"compilerOptions": {
+		// Project Options
+		"outDir": "./build/",
+		"module": "ES6",
+		"target": "es2015",
+		"allowJs": true,
+		"sourceMap": true,
+		"lib": [
+			"ES6", "DOM"
+		],
+		"downlevelIteration": true,
+
+		// Module Resolution
+		"typeRoots": ["node_modules/@types"],
+
+		// Strict Checks
+		"noImplicitAny": true,
+
+		// Linter Checks
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true
+	},
+}

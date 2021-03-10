@@ -1,10 +1,15 @@
-import Component from "./Component.js";
-import store from "../store/index";
-import ExpenseFormCategory from "./ExpenseFormCategory";
+import { Component } from "./Component";
+import { store } from "../store/index";
+import { ExpenseFormCategory } from "./ExpenseFormCategory";
 
-export default class ExpenseForm extends Component {
+class ExpenseForm extends Component {
+	hasRendered: boolean
+	inputAmount: HTMLInputElement
+	submitButton: HTMLButtonElement
+	inputCategory: HTMLSelectElement
+
 	constructor() {
-		super({ store, element: document.createElement("form") });
+		super(document.createElement("form"), store);
 		this.hasRendered = false;
 
 		// Setting up the form legend
@@ -19,6 +24,9 @@ export default class ExpenseForm extends Component {
 		this.inputAmount.setAttribute("required", "true");
 		this.inputAmount.setAttribute("step", "any");
 
+		// Setting up the category selector
+		this.inputCategory = new ExpenseFormCategory().render();
+
 		// Setting up the form submit button
 		this.submitButton = document.createElement("button");
 		this.submitButton.classList.add("button");
@@ -30,9 +38,6 @@ export default class ExpenseForm extends Component {
 		prefix.classList.add("prefix");
 		prefix.innerText = "$";
 
-		// Setting up the category selector
-		this.inputCategory = new ExpenseFormCategory().render();
-
 		// Wrap the prefix and the input altogether
 		const inputBox = document.createElement("div");
 		inputBox.classList.add("input-box");
@@ -43,7 +48,7 @@ export default class ExpenseForm extends Component {
 		this.element.append(legend, inputBox, this.submitButton);
 	}
 
-	onSubmit(event) {
+	onSubmit(event: any) {
 		event.preventDefault();
 
 		const amount = this.inputAmount.valueAsNumber;
@@ -53,12 +58,12 @@ export default class ExpenseForm extends Component {
 			// Clear the input value
 			this.inputAmount.value = "";
 
-			store.commit("addExpense", { amount, category });
+			store.commit("addExpense", { amount, categoryId: category });
 		}
 	}
 
 	setEvents() {
-		this.element.addEventListener("submit", (event) => this.onSubmit(event));
+		this.element.addEventListener("submit", (event: any) => this.onSubmit(event));
 	}
 
 	render() {
@@ -70,3 +75,5 @@ export default class ExpenseForm extends Component {
 		return this.element;
 	}
 }
+
+export { ExpenseForm };

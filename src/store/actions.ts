@@ -1,5 +1,7 @@
-export default {
-	setInitialState(context) {
+import { Store } from "./store";
+
+const actions = {
+	setInitialState(context: Store): boolean | void {
 		const { localStorageKey } = context.state;
 		const localStorageState = localStorage.getItem(localStorageKey);
 
@@ -8,16 +10,16 @@ export default {
 			context.state = storedState;
 			return true;
 		} else {
-			context.dispatch("setInitialCategories");
+			context.dispatch("setInitialCategories" ,{});
 		}
 	},
 
-	setLocalStorageState(context) {
+	setLocalStorageState(context: Store): void {
 		const { localStorageKey } = context.state;
 		localStorage.setItem(localStorageKey, JSON.stringify(context.state));
 	},
 
-	setInitialCategories(context) {
+	setInitialCategories(context: Store): void {
 		const initialCategories = [
 			"Snack",
 			"Meal",
@@ -28,7 +30,10 @@ export default {
 		];
 
 		initialCategories.forEach((categoryName) => {
-			context.commit("addCategory", { name: categoryName });
+			const payload: object = { name: categoryName };
+			context.commit("addCategory", payload );
 		});
 	},
 };
+
+export { actions };

@@ -1,8 +1,9 @@
-import Component from "./Component";
+import { Component } from "./Component";
+import { Expense, Category } from "../models/index";
 
-export default class ExpensesListItem extends Component {
-	constructor({ expense, category }) {
-		super({ element: document.createElement("article") });
+class ExpensesListSectionItem extends Component {
+	constructor(expense: Expense, category: Category) {
+		super(document.createElement("article"));
 		this.element.classList.add("expenses-list-section-item");
 		this.element.setAttribute("data-id", expense.id);
 		this.element.setAttribute("role", "listitem");
@@ -37,3 +38,5 @@ export default class ExpensesListItem extends Component {
 		return this.element;
 	}
 }
+
+export { ExpensesListSectionItem };
