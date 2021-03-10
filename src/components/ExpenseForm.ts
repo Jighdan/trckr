@@ -9,7 +9,7 @@ class ExpenseForm extends Component {
 	inputCategory: HTMLSelectElement
 
 	constructor() {
-		super(document.createElement("form"), store);
+		super(document.createElement("form"), store, true);
 		this.hasRendered = false;
 
 		// Setting up the form legend

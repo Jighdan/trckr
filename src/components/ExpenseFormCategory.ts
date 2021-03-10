@@ -4,7 +4,7 @@ import { Category } from "../models/index";
 
 class ExpenseFormCategory extends Component {
 	constructor() {
-		super(document.createElement("select"), store);
+		super(document.createElement("select"), store, true);
 
 		// Setting up the select element attributes
 		this.element.setAttribute("aria-label", "Expense Category");
