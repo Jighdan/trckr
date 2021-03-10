@@ -5,6 +5,7 @@ import { ExpensesListSection } from "./ExpensesListSection";
 class ExpensesList extends Component {
 	constructor() {
 		super(document.createElement("main"), store);
+		this.element.classList.add("expenses-list");
 	}
 
 	render() {
