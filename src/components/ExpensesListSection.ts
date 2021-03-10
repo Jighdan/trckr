@@ -4,7 +4,7 @@ import { Expense } from "../models/index";
 import { ExpensesListSectionItem } from "./ExpensesListSectionItem";
 
 class ExpensesListSection extends Component {
-	constructor(date: Date, expenses: Array<Expense>) {
+	constructor(date: string, expenses: Array<Expense>) {
 		super(document.createElement("section"), null, true);
 
 		// Setting up section attributes
@@ -14,7 +14,7 @@ class ExpensesListSection extends Component {
 		// Setting up the section title
 		const title = document.createElement("h2");
 		title.classList.add("expenses-list-section-date");
-		title.innerText = `${date}`;
+		title.innerText = date;
 
 		// Setting up the section expenses
 		const expensesContainer = document.createElement("div");

@@ -1,4 +1,5 @@
 import { State, Category } from "../models/index";
+import { composeDate } from "../library/dateComposer";
 
 const getters = {
 	getExpensesTotal(state: State): string {
@@ -16,19 +17,18 @@ const getters = {
 	getExpensesByDate(state: State): object {
 		let composedExpensesByDate: {[index: string]:any} = {};
 
-		const availableDates = state.expenses.map(({ dateAdded }) => new Date(dateAdded).toDateString());
+		const availableDates = state.expenses.map((expense) => composeDate(expense.dateAdded));
 		const setOfUniqueDates = new Set(availableDates);
 		const arrayOfUniqueDates = new Array(...setOfUniqueDates);
 
 		arrayOfUniqueDates.forEach((date) => {
-			const expensesByDate = state.expenses.filter(
-				({ dateAdded }) => new Date(dateAdded).toDateString() === date
-			);
-			const sortedExpensesByDate = expensesByDate.sort((a, b): any => {
+			const formattedDate = composeDate(date);
+			const expensesByDate = state.expenses.filter((expense) => composeDate(expense.dateAdded) === date);
+			const sortedExpensesByTime = expensesByDate.sort((a, b): any => (
 				new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
-			});
+		));
 
-			composedExpensesByDate[`${date}`] = sortedExpensesByDate;
+			composedExpensesByDate[formattedDate] = sortedExpensesByTime;
 		});
 
 		return composedExpensesByDate;

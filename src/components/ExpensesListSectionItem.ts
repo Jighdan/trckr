@@ -1,5 +1,6 @@
 import { Component } from "./Component";
 import { Expense, Category } from "../models/index";
+import { composeTime } from "../library/dateComposer";
 
 class ExpensesListSectionItem extends Component {
 	constructor(expense: Expense, category: Category) {
@@ -20,7 +21,7 @@ class ExpensesListSectionItem extends Component {
 		categoryShape.style.borderColor = category.color;
 
 		// Setting up the time added element
-		const formattedTime = new Date(expense.dateAdded).toLocaleTimeString();
+		const formattedTime = composeTime(expense.dateAdded);
 		const timeAdded = document.createElement("span");
 		timeAdded.classList.add("time");
 		timeAdded.innerText = formattedTime;

@@ -16,7 +16,7 @@ class ExpensesList extends Component {
 
 			Object.keys(expensesByDate).forEach((date) => {
 				const expenseSectionElement = new ExpensesListSection(
-					new Date(date),
+					date,
 					expensesByDate[date],
 				);
 				this.element.appendChild(expenseSectionElement.render());
