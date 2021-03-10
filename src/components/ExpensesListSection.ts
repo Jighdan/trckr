@@ -1,6 +1,6 @@
 import { Component } from "./Component";
 import { store } from "../store/index";
-import { Expense } from "../models/index";
+import { ComposedSubCategory, Expense } from "../models/index";
 import { ExpensesListItem } from "./ExpensesListItem/index";
 
 class ExpensesListSection extends Component {
@@ -20,8 +20,7 @@ class ExpensesListSection extends Component {
 		const expensesContainer = document.createElement("div");
 		expensesContainer.classList.add("expenses-list-section-container");
 		for (let expense of expenses) {
-			const category = store.getter("getCategoryById", { categoryId: expense.categoryId});
-
+			const category: ComposedSubCategory = store.getter("getComposedSubCategoryByExpenseCategory", { expenseCategory: expense.category });
 			const expenseElement = new ExpensesListItem(
 				expense,
 				category,

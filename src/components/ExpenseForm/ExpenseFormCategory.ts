@@ -1,25 +1,33 @@
-import { Category } from "../../models/index";
+import { Category, SubCategory } from "../../models/index";
 
-const composeSelectOption = (category: Category): HTMLOptionElement => {
-	const { id, name } = category;
+const composeSelectOption = (categoryKey: string, subCategory: SubCategory): HTMLOptionElement => {
+	const value: string = JSON.stringify({ name: categoryKey, subCategoryId: subCategory.id });
 	const element: HTMLOptionElement = document.createElement("option");
 	element.setAttribute("required", "true");
-	element.setAttribute("value", id);
-	element.innerText = name;
-
-	if (name === "Other") {
-		element.setAttribute("selected", "true");
-	}
+	element.setAttribute("value", value);
+	element.innerText = subCategory.name;
 
 	return element;
 };
 
-const ExpenseFormCategory = (categories: Array<Category>): HTMLSelectElement => {
-	const options: Array<HTMLOptionElement> = categories.map(category => composeSelectOption(category));
+const composeSelectOptionGroup = (categoryKey: string, categoryData: Category): HTMLOptGroupElement => {
+	const element: HTMLOptGroupElement = document.createElement("optgroup");
+	element.setAttribute("label", categoryData.name);
+
+	const options = categoryData.subCategories.map(subCategory => composeSelectOption(categoryKey, subCategory));
+	element.append(...options);
+
+	return element;
+}
+
+const ExpenseFormCategory = (categories: {[index: string]: Category}): HTMLSelectElement => {
+	const optionsGroup: Array<HTMLOptGroupElement> = Object.keys(categories).map(categoryKey => (
+		composeSelectOptionGroup(categoryKey, categories[categoryKey])
+	));
 	const element: HTMLSelectElement = document.createElement("select");
 	element.setAttribute("aria-label", "Expense Category");
 	element.setAttribute("name", "expenseCategory");
-	element.append(...options)
+	element.append(...optionsGroup)
 
 	return element;
 }

@@ -1,4 +1,4 @@
-import { State, Category } from "../models/index";
+import { State, ExpenseCategory, Category, SubCategory, ComposedSubCategory } from "../models/index";
 import { composeDate } from "../library/dateComposer";
 
 const getters = {
@@ -34,13 +34,19 @@ const getters = {
 		return composedExpensesByDate;
 	},
 
-	getSortedCategories(state: State): Array<Category> {
-		return state.categories.sort((a, b) => a.name.localeCompare(b.name));
-	},
+	getComposedSubCategoryByExpenseCategory(state: State, { expenseCategory }: { expenseCategory: ExpenseCategory }): ComposedSubCategory {
+		console.log(expenseCategory)
+		const subCategory: SubCategory = state.categories[expenseCategory.name].subCategories.find(subCategory => (
+			subCategory.id === expenseCategory.subCategoryId
+		));
 
-	getCategoryById(state: State, { categoryId }: { categoryId: string }): Category {
-		return state.categories.find((category) => category.id === categoryId);
-	},
+		return {
+			id: subCategory.id,
+			name: subCategory.name,
+			color: state.categories[expenseCategory.name].color,
+			type: state.types[subCategory.typeId]
+		}
+	}
 };
 
 export { getters }

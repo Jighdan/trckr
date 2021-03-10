@@ -1,20 +1,20 @@
 import { Component } from "../Component";
-import { Expense, Category } from "../../models/index";
+import { Expense, ComposedSubCategory } from "../../models/index";
 import { ExpensesListItemAmount } from "./ExpensesListItemAmount";
 import { ExpensesListItemCategoryTitle } from "./ExpensesListItemCategoryTitle";
 import { ExpensesListItemCategoryShape } from "./ExpensesListItemCategoryShape";
 import { ExpensesListItemTime } from "./ExpensesListItemTime";
 
 class ExpensesListItem extends Component {
-	constructor(expense: Expense, category: Category) {
+	constructor(expense: Expense, composedSubCategory: ComposedSubCategory) {
 		super(document.createElement("article"));
 		this.element.classList.add("expenses-list-item");
 		this.element.setAttribute("data-id", expense.id);
 		this.element.setAttribute("role", "listitem");
 
 		const amount = ExpensesListItemAmount(expense.amount);
-		const categoryTitle = ExpensesListItemCategoryTitle(category.name);
-		const categoryShape = ExpensesListItemCategoryShape(category.color);
+		const categoryTitle = ExpensesListItemCategoryTitle(composedSubCategory.name);
+		const categoryShape = ExpensesListItemCategoryShape(composedSubCategory.color);
 		const time = ExpensesListItemTime(expense.dateAdded);
 
 		const elementHeader: HTMLHeadElement = document.createElement("header");

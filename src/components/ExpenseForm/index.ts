@@ -18,7 +18,7 @@ class ExpenseForm extends Component {
 
 		// Setting up the form inputs
 		this.inputAmount = ExpenseFormAmount();
-		this.inputCategory = ExpenseFormCategory(store.getter("getSortedCategories"));
+		this.inputCategory = ExpenseFormCategory(store.state.categories);
 
 		// Setting up the form submit button
 		this.submitButton = document.createElement("button");
@@ -45,13 +45,13 @@ class ExpenseForm extends Component {
 		event.preventDefault();
 
 		const amount = this.inputAmount.valueAsNumber;
-		const category = this.inputCategory.value;
+		const category = JSON.parse(this.inputCategory.value);
 
 		if (amount && amount > 0) {
 			// Clear the input value
 			this.inputAmount.value = "";
 
-			store.commit("addExpense", { amount, categoryId: category });
+			store.commit("addExpense", { amount, category });
 		}
 	}
 

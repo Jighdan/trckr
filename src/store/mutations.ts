@@ -1,23 +1,22 @@
-import { State } from "../models/index";
+import { State, ExpenseCategory } from "../models/index";
 import { generateId } from "../library/idGenerator";
-import { getRandomColor } from "../library/colorGenerator";
 
 const mutations = {
-	addExpense(state: State, { amount, categoryId }: { amount: number, categoryId: string }): void {
+	addExpense(state: State, { amount, category }: { amount: number, category: ExpenseCategory }): void {
 		state.expenses.push({
 			id: generateId(),
 			amount,
-			categoryId,
+			category,
 			dateAdded: new Date(),
 		});
 	},
 
-	addCategory(state: State, { name, color }: { name: string, color?: string }): void {
-		state.categories.push({
+	addSubCategory(state: State, { parentCategory, name, typeId }: { parentCategory: string, name: string, typeId: string }): void {
+		state.categories[parentCategory]?.subCategories.push({
 			id: generateId(),
 			name,
-			color: color ? color : getRandomColor(),
-		});
+			typeId
+		})
 	},
 };
 
