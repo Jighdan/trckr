@@ -1,10 +1,10 @@
 import { Component } from "./Component";
 import { store } from "../store/index";
-import { Expense } from "../models/index";
-import { ExpensesListSectionItem } from "./ExpensesListSectionItem";
+import { ComposedSubCategory, Expense } from "../models/index";
+import { ExpensesListItem } from "./ExpensesListItem/index";
 
 class ExpensesListSection extends Component {
-	constructor(date: Date, expenses: Array<Expense>) {
+	constructor(date: string, expenses: Array<Expense>) {
 		super(document.createElement("section"), null, true);
 
 		// Setting up section attributes
@@ -14,16 +14,14 @@ class ExpensesListSection extends Component {
 		// Setting up the section title
 		const title = document.createElement("h2");
 		title.classList.add("expenses-list-section-date");
-		title.innerText = `${date}`;
+		title.innerText = date;
 
 		// Setting up the section expenses
 		const expensesContainer = document.createElement("div");
 		expensesContainer.classList.add("expenses-list-section-container");
 		for (let expense of expenses) {
-			const category = store.getter("getCategoryById", { categoryId: expense.categoryId});
-			console.log(category)
-
-			const expenseElement = new ExpensesListSectionItem(
+			const category: ComposedSubCategory = store.getter("getComposedSubCategoryByExpenseCategory", { expenseCategory: expense.category });
+			const expenseElement = new ExpensesListItem(
 				expense,
 				category,
 			);

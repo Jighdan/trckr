@@ -19,7 +19,7 @@ body {
 	width: 100%;
 }
 
-#root {
+#appRoot {
 	display: grid;
 	grid-template-rows: repeat(auto-fill, auto);
 	justify-content: center;

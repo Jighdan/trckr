@@ -1,4 +1,5 @@
 import { Store } from "./store";
+import { defaultState } from "../library/defaultState";
 
 const actions = {
 	setInitialState(context: Store): boolean | void {
@@ -10,7 +11,7 @@ const actions = {
 			context.state = storedState;
 			return true;
 		} else {
-			context.dispatch("setInitialCategories" ,{});
+			context.dispatch("setDefaultState", {});
 		}
 	},
 
@@ -19,20 +20,8 @@ const actions = {
 		localStorage.setItem(localStorageKey, JSON.stringify(context.state));
 	},
 
-	setInitialCategories(context: Store): void {
-		const initialCategories = [
-			"Snack",
-			"Meal",
-			"Gift",
-			"Transport",
-			"Other",
-			"Entertainment",
-		];
-
-		initialCategories.forEach((categoryName) => {
-			const payload: object = { name: categoryName };
-			context.commit("addCategory", payload );
-		});
+	setDefaultState(context: Store): void {
+		context.state = defaultState;
 	},
 };
 

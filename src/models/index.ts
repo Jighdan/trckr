@@ -1,20 +1,50 @@
 interface State {
 	expenses: Array<Expense>;
-	categories: Array<Category>;
+	categories: {[index: string]: Category};
+	types: {[index: string]: Type};
 	localStorageKey: string;
 }
 
 interface Expense {
-	id: string;
+	id: string | (() => string);
 	amount: number;
-	categoryId: string;
+	category: ExpenseCategory;
 	dateAdded: Date;
 }
 
-interface Category {
-	id: string;
+interface ExpenseCategory {
 	name: string;
-	color: string;
+	subCategoryId: string;
 }
 
-export { State, Expense, Category }
+interface Category {
+	name: string;
+	color: string;
+	subCategories: Array<SubCategory>;
+}
+
+interface SubCategory {
+	id: string | (() => string);
+	name: string;
+	typeId: string;
+}
+
+interface ComposedSubCategory {
+	id: string | (() => string);
+	name: string;
+	color: string;
+	type: Type;
+}
+
+interface Type {
+	name: string;
+	icon: string;
+}
+
+interface View {
+	name: string;
+	callback: CallableFunction;
+	default?: boolean;
+}
+
+export { State, Expense, ExpenseCategory, Category, SubCategory, ComposedSubCategory, Type, View }
