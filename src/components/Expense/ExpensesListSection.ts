@@ -1,7 +1,7 @@
-import { Component } from "./Component";
-import { store } from "../store/index";
-import { InterfaceExpense } from "../models/Expense";
-import { InterfaceComposedSubCategory } from "../models/Category";
+import { Component } from "../Component";
+import { store } from "../../store/index";
+import { InterfaceExpense } from "../../models/Expense";
+import { InterfaceComposedSubCategory } from "../../models/Category";
 import { ExpensesListItem } from "./ExpensesListItem/index";
 
 class ExpensesListSection extends Component {

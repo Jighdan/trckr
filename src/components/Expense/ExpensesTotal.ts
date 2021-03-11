@@ -1,5 +1,5 @@
-import { Component } from "./Component";
-import { store } from "../store/index";
+import { Component } from "../Component";
+import { store } from "../../store/index";
 
 class ExpensesTotal extends Component {
 	amountElement: HTMLHeadingElement

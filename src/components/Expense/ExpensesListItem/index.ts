@@ -1,6 +1,6 @@
-import { Component } from "../Component";
-import { InterfaceExpense } from "../../models/Expense";
-import { InterfaceComposedSubCategory } from "../../models/Category";
+import { Component } from "../../Component";
+import { InterfaceExpense } from "../../../models/Expense";
+import { InterfaceComposedSubCategory } from "../../../models/Category";
 import { ExpensesListItemAmount } from "./ExpensesListItemAmount";
 import { ExpensesListItemCategoryTitle } from "./ExpensesListItemCategoryTitle";
 import { ExpensesListItemCategoryShape } from "./ExpensesListItemCategoryShape";

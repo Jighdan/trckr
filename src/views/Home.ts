@@ -1,6 +1,6 @@
-import { ExpenseForm } from "../components/ExpenseForm/index";
-import { ExpensesList } from "../components/ExpensesList";
-import { ExpensesTotal } from "../components/ExpensesTotal";
+import { ExpenseForm } from "../components/Expense/ExpenseForm/index";
+import { ExpensesList } from "../components/Expense/ExpensesList";
+import { ExpensesTotal } from "../components/Expense/ExpensesTotal";
 
 const Home = (root: HTMLElement): void => {
 	const instanceOfExpenseForm = new ExpenseForm();

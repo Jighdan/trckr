@@ -1,4 +1,4 @@
-import { InterfaceCategory, InterfaceSubCategory } from "../../models/Category";
+import { InterfaceCategory, InterfaceSubCategory } from "../../../models/Category";
 
 const composeSelectOption = (categoryKey: string, subCategory: InterfaceSubCategory): HTMLOptionElement => {
 	const value: string = JSON.stringify({ name: categoryKey, subCategoryId: subCategory.id });

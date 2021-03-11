@@ -1,4 +1,4 @@
-import { InterfaceType } from "../../models/Type";
+import { InterfaceType } from "../../../models/Type";
 
 const ExpenseListItemCategoryShapeIcon = (iconPath: string): HTMLDivElement => {
 	const element: HTMLDivElement = document.createElement("div");
