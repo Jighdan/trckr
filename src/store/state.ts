@@ -1,10 +1,10 @@
-import { State } from "../models/index";
+import { InterfaceState } from "../models/State";
 
-const state: State = {
+const state: InterfaceState = {
 	expenses: [],
 	categories: {},
 	types: {},
-	localStorageKey: "daily-tr.ck.r-app-state",
+	localStorageKey: "",
 };
 
 export { state };

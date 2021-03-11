@@ -1,11 +1,11 @@
-import { View } from "../models/index";
+import { InterfaceView } from "../models/View";
 import { Home } from "./Home";
 
 const appRoot: HTMLElement = document.getElementById("appRoot");
 const viewsRoot: HTMLHeadElement = document.getElementById("viewsRoot");
 let currentView: string = "";
 
-const allViews: Array<View> = [
+const allViews: Array<InterfaceView> = [
 	{
 		name: "Home",
 		callback: Home,
@@ -13,14 +13,14 @@ const allViews: Array<View> = [
 	}
 ];
 
-const setCurrentView = (view: View) => {
+const setCurrentView = (view: InterfaceView) => {
 	if (view.name !== currentView) {
 		appRoot.innerHTML = "";
 		view.callback(appRoot);
 	}
 }
 
-const composeViewElement = (view: View) => {
+const composeViewElement = (view: InterfaceView) => {
 	const element = document.createElement("h2");
 	element.innerText = view.name;
 	element.addEventListener("click", () => (setCurrentView.call(this, view)), true);

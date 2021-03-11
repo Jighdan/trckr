@@ -1,14 +1,14 @@
 import { EventObserver } from "../library/eventObserver";
-import { State } from "../models/index";
+import { InterfaceState } from "../models/State";
 
 class Store {
-	state: State;
+	state: InterfaceState;
 	mutations: {[index: string]:any};
 	getters: {[index: string]:any};
 	actions: {[index: string]:any};
 	events: EventObserver;
 
-	constructor(state: State, mutations: object, getters: object, actions: object) {
+	constructor(state: InterfaceState, mutations: object, getters: object, actions: object) {
 		this.state = state;
 		this.mutations = mutations;
 		this.actions = actions;

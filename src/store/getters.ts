@@ -1,8 +1,10 @@
-import { State, ExpenseCategory, Category, SubCategory, ComposedSubCategory } from "../models/index";
+import { InterfaceState } from "../models/State";
+import { InterfaceExpenseCategory } from "../models/Expense";
+import { InterfaceSubCategory, InterfaceComposedSubCategory } from "../models/Category";
 import { composeDate } from "../library/dateComposer";
 
 const getters = {
-	getExpensesTotal(state: State): string {
+	getExpensesTotal(state: InterfaceState): string {
 		if (state.expenses && state.expenses.length) {
 			const allExpensesAmount = state.expenses.map((expense) => expense.amount);
 			const total = allExpensesAmount.reduce(
@@ -14,7 +16,7 @@ const getters = {
 		return "$0.00";
 	},
 
-	getExpensesByDate(state: State): object {
+	getExpensesByDate(state: InterfaceState): object {
 		let composedExpensesByDate: {[index: string]:any} = {};
 
 		const availableDates = state.expenses.map((expense) => composeDate(expense.dateAdded));
@@ -34,8 +36,8 @@ const getters = {
 		return composedExpensesByDate;
 	},
 
-	getComposedSubCategoryByExpenseCategory(state: State, { expenseCategory }: { expenseCategory: ExpenseCategory }): ComposedSubCategory {
-		const subCategory: SubCategory = state.categories[expenseCategory.name].subCategories.find(subCategory => (
+	getComposedSubCategoryByExpenseCategory(state: InterfaceState, { expenseCategory }: { expenseCategory: InterfaceExpenseCategory }): InterfaceComposedSubCategory {
+		const subCategory: InterfaceSubCategory = state.categories[expenseCategory.name].subCategories.find(subCategory => (
 			subCategory.id === expenseCategory.subCategoryId
 		));
 

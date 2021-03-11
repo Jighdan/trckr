@@ -1,12 +1,13 @@
 import { Component } from "../Component";
-import { Expense, ComposedSubCategory } from "../../models/index";
+import { InterfaceExpense } from "../../models/Expense";
+import { InterfaceComposedSubCategory } from "../../models/Category";
 import { ExpensesListItemAmount } from "./ExpensesListItemAmount";
 import { ExpensesListItemCategoryTitle } from "./ExpensesListItemCategoryTitle";
 import { ExpensesListItemCategoryShape } from "./ExpensesListItemCategoryShape";
 import { ExpensesListItemTime } from "./ExpensesListItemTime";
 
 class ExpensesListItem extends Component {
-	constructor(expense: Expense, composedSubCategory: ComposedSubCategory) {
+	constructor(expense: InterfaceExpense, composedSubCategory: InterfaceComposedSubCategory) {
 		super(document.createElement("article"));
 		this.element.classList.add("expenses-list-item");
 		this.element.setAttribute("data-id", expense.id);
