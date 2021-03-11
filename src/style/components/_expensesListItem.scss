@@ -6,20 +6,25 @@
 
 	&-header {
 		.expenses-list-item-category-shape {
-			width: $font-lg;
-			height: $font-lg;
-			margin-right: 0.5rem;
+			width: $font-xl;
+			height: $font-xl;
 			border-width: 5px;
 			border-style: solid;
-			border-radius: 50%;
+			border-radius: 5px;
+			background-color: currentColor;
 
-			&:hover {
-				background-color: currentColor;
+			&-icon {
+				height: 100%;
+				width: 100%;
+				background-color: $color-white;
 			}
 		}
 	}
 
 	&-body {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+
 		.expenses-list-item-amount {
 			font-size: $font-lg;
 			font-weight: bold;

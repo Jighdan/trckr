@@ -14,7 +14,7 @@ class ExpensesListItem extends Component {
 
 		const amount = ExpensesListItemAmount(expense.amount);
 		const categoryTitle = ExpensesListItemCategoryTitle(composedSubCategory.name);
-		const categoryShape = ExpensesListItemCategoryShape(composedSubCategory.color);
+		const categoryShape = ExpensesListItemCategoryShape(composedSubCategory.color, composedSubCategory.type);
 		const time = ExpensesListItemTime(expense.dateAdded);
 
 		const elementHeader: HTMLHeadElement = document.createElement("header");
