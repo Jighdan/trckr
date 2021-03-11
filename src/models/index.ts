@@ -41,4 +41,10 @@ interface Type {
 	icon: string;
 }
 
-export { State, Expense, ExpenseCategory, Category, SubCategory, ComposedSubCategory, Type }
+interface View {
+	name: string;
+	callback: CallableFunction;
+	default?: boolean;
+}
+
+export { State, Expense, ExpenseCategory, Category, SubCategory, ComposedSubCategory, Type, View }
