@@ -1,4 +1,4 @@
-import { State } from "../models/index";
+import { InterfaceState } from "../models/State";
 
 class EventObserver {
 	events: {[index: string]:any}
@@ -15,7 +15,7 @@ class EventObserver {
 		return this.events[event].push(callback);
 	}
 
-	notify(event: string, state: State) {
+	notify(event: string, state: InterfaceState) {
 		if (!this.events.hasOwnProperty(event)) {
 			return [];
 		}

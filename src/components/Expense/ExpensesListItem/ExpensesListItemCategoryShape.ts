@@ -1,4 +1,4 @@
-import { Type } from "../../models/index";
+import { InterfaceType } from "../../../models/Type";
 
 const ExpenseListItemCategoryShapeIcon = (iconPath: string): HTMLDivElement => {
 	const element: HTMLDivElement = document.createElement("div");
@@ -10,7 +10,7 @@ const ExpenseListItemCategoryShapeIcon = (iconPath: string): HTMLDivElement => {
 	return element;
 } 
 
-const ExpensesListItemCategoryShape = (categoryColor: string, type: Type): HTMLDivElement => {
+const ExpensesListItemCategoryShape = (categoryColor: string, type: InterfaceType): HTMLDivElement => {
 	const iconElement = ExpenseListItemCategoryShapeIcon(type.icon);
 	const element: HTMLDivElement = document.createElement("div");
 	element.classList.add("expenses-list-item-category-shape");

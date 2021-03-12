@@ -1,5 +1,5 @@
-import { Component } from "../Component";
-import { store } from "../../store/index";
+import { Component } from "../../Component";
+import { store } from "../../../store/index";
 import { ExpenseFormAmount } from "./ExpenseFormAmount";
 import { ExpenseFormCategory } from "./ExpenseFormCategory";
 
@@ -41,7 +41,7 @@ class ExpenseForm extends Component {
 		this.element.append(legend, inputBox, this.submitButton);
 	}
 
-	onSubmit(event: any) {
+	onSubmit(event: Event): void {
 		event.preventDefault();
 
 		const amount = this.inputAmount.valueAsNumber;
@@ -55,11 +55,11 @@ class ExpenseForm extends Component {
 		}
 	}
 
-	setEvents() {
-		this.element.addEventListener("submit", (event: any) => this.onSubmit(event));
+	setEvents(): void {
+		this.element.addEventListener("submit", (event: Event) => this.onSubmit(event));
 	}
 
-	render() {
+	render = (): HTMLElement => {
 		this.setEvents();
 		return this.element;
 	}

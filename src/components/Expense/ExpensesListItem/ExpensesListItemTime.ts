@@ -1,4 +1,4 @@
-import { composeTime } from "../../library/dateComposer";
+import { composeTime } from "../../../library/dateComposer";
 
 const ExpensesListItemTime = (time: Date): HTMLSpanElement => {
 	const formattedTime = composeTime(time);

@@ -1,6 +1,6 @@
-import { Category, SubCategory } from "../../models/index";
+import { InterfaceCategory, InterfaceSubCategory } from "../../../models/Category";
 
-const composeSelectOption = (categoryKey: string, subCategory: SubCategory): HTMLOptionElement => {
+const composeSelectOption = (categoryKey: string, subCategory: InterfaceSubCategory): HTMLOptionElement => {
 	const value: string = JSON.stringify({ name: categoryKey, subCategoryId: subCategory.id });
 	const element: HTMLOptionElement = document.createElement("option");
 	element.setAttribute("required", "true");
@@ -10,7 +10,7 @@ const composeSelectOption = (categoryKey: string, subCategory: SubCategory): HTM
 	return element;
 };
 
-const composeSelectOptionGroup = (categoryKey: string, categoryData: Category): HTMLOptGroupElement => {
+const composeSelectOptionGroup = (categoryKey: string, categoryData: InterfaceCategory): HTMLOptGroupElement => {
 	const element: HTMLOptGroupElement = document.createElement("optgroup");
 	element.setAttribute("label", categoryData.name);
 
@@ -20,7 +20,7 @@ const composeSelectOptionGroup = (categoryKey: string, categoryData: Category): 
 	return element;
 }
 
-const ExpenseFormCategory = (categories: {[index: string]: Category}): HTMLSelectElement => {
+const ExpenseFormCategory = (categories: {[index: string]: InterfaceCategory}): HTMLSelectElement => {
 	const optionsGroup: Array<HTMLOptGroupElement> = Object.keys(categories).map(categoryKey => (
 		composeSelectOptionGroup(categoryKey, categories[categoryKey])
 	));

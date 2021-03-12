@@ -1,14 +1,14 @@
 import { EventObserver } from "../library/eventObserver";
-import { State } from "../models/index";
+import { InterfaceState } from "../models/State";
 
 class Store {
-	state: State;
+	state: InterfaceState;
 	mutations: {[index: string]:any};
 	getters: {[index: string]:any};
 	actions: {[index: string]:any};
 	events: EventObserver;
 
-	constructor(state: State, mutations: object, getters: object, actions: object) {
+	constructor(state: InterfaceState, mutations: Record<string, unknown>, getters: Record<string, unknown>, actions: Record<string, unknown>) {
 		this.state = state;
 		this.mutations = mutations;
 		this.actions = actions;
@@ -16,7 +16,7 @@ class Store {
 		this.events = new EventObserver();
 	}
 
-	commit(key: string, payload: object): boolean | void {
+	commit(key: string, payload: Record<string, unknown>): boolean | void {
 		const mutation: CallableFunction | undefined = this.mutations[key];
 		if (mutation === undefined) {
 			console.error(`State mutation "${key}" doesn't exist`);
@@ -28,7 +28,7 @@ class Store {
 		this.events.notify("stateChange", this.state);
 	}
 
-	dispatch(key: string, payload?: object): boolean | void {
+	dispatch(key: string, payload?: Record<string, unknown>): boolean | void {
 		const action: CallableFunction | undefined = this.actions[key]; 
 		if (action === undefined) {
 			console.error(`Action "${key}" doesn't exist`);
@@ -38,7 +38,7 @@ class Store {
 		this.actions[key](this, payload);
 	}
 
-	getter(key: string, payload?: object): any {
+	getter(key: string, payload?: Record<string, unknown>): any {
 		const getter: CallableFunction | undefined = this.getters[key];
 		if (getter === undefined) {
 			console.error(`Getter "${key}" doesn't exist`);

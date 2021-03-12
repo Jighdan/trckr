@@ -1,5 +1,5 @@
-import { Component } from "./Component";
-import { store } from "../store/index";
+import { Component } from "../Component";
+import { store } from "../../store/index";
 
 class ExpensesTotal extends Component {
 	amountElement: HTMLHeadingElement
@@ -19,7 +19,7 @@ class ExpensesTotal extends Component {
 		this.element.append(this.amountElement, descriptionElement);
 	}
 
-	render() {
+	render = (): HTMLElement => {
 		const total = store.getter("getExpensesTotal");
 		this.amountElement.innerText = total;
 

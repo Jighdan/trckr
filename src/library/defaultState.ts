@@ -1,7 +1,9 @@
-import { State, Category, Type } from "../models/index";
+import { InterfaceState } from "../models/State";
+import { InterfaceCategory } from "../models/Category";
+import { InterfaceType } from "../models/Type";
 import { generateId } from "../library/idGenerator";
 
-const defaultCategories: {[index: string]: Category} = {
+const defaultCategories: {[index: string]: InterfaceCategory} = {
 	"happyTo": {
 		name: "Happy to",
 		color: "#264653",
@@ -59,7 +61,7 @@ const defaultCategories: {[index: string]: Category} = {
 	}
 }
 
-const defaultTypes: {[index: string]: Type} = {
+const defaultTypes: {[index: string]: InterfaceType} = {
 	"1": {
 		name: "Bill",
 		icon: "./assets/icons/iconTypeBill.svg"
@@ -102,7 +104,7 @@ const defaultTypes: {[index: string]: Type} = {
 	}
 };
 
-const defaultState: State = {
+const defaultState: InterfaceState = {
 	expenses: [],
 	categories: defaultCategories,
 	types: defaultTypes,

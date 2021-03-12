@@ -1,5 +1,5 @@
-import { Component } from "./Component";
-import { store } from "../store/index";
+import { Component } from "../Component";
+import { store } from "../../store/index";
 import { ExpensesListSection } from "./ExpensesListSection";
 
 class ExpensesList extends Component {
@@ -8,7 +8,7 @@ class ExpensesList extends Component {
 		this.element.classList.add("expenses-list");
 	}
 
-	render() {
+	render = (): HTMLElement => {
 		if (store.state.expenses.length) {
 			// Clear the element content
 			this.element.innerHTML = "";

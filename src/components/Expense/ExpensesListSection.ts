@@ -1,10 +1,11 @@
-import { Component } from "./Component";
-import { store } from "../store/index";
-import { ComposedSubCategory, Expense } from "../models/index";
+import { Component } from "../Component";
+import { store } from "../../store/index";
+import { InterfaceExpense } from "../../models/Expense";
+import { InterfaceComposedSubCategory } from "../../models/Category";
 import { ExpensesListItem } from "./ExpensesListItem/index";
 
 class ExpensesListSection extends Component {
-	constructor(date: string, expenses: Array<Expense>) {
+	constructor(date: string, expenses: Array<InterfaceExpense>) {
 		super(document.createElement("section"), null, true);
 
 		// Setting up section attributes
@@ -19,8 +20,8 @@ class ExpensesListSection extends Component {
 		// Setting up the section expenses
 		const expensesContainer = document.createElement("div");
 		expensesContainer.classList.add("expenses-list-section-container");
-		for (let expense of expenses) {
-			const category: ComposedSubCategory = store.getter("getComposedSubCategoryByExpenseCategory", { expenseCategory: expense.category });
+		for (const expense of expenses) {
+			const category: InterfaceComposedSubCategory = store.getter("getComposedSubCategoryByExpenseCategory", { expenseCategory: expense.category });
 			const expenseElement = new ExpensesListItem(
 				expense,
 				category,
@@ -32,7 +33,7 @@ class ExpensesListSection extends Component {
 		this.element.append(title, expensesContainer);
 	}
 
-	render() {
+	render = (): HTMLElement => {
 		return this.element;
 	}
 }
