@@ -20,7 +20,7 @@ class ExpensesListSection extends Component {
 		// Setting up the section expenses
 		const expensesContainer = document.createElement("div");
 		expensesContainer.classList.add("expenses-list-section-container");
-		for (let expense of expenses) {
+		for (const expense of expenses) {
 			const category: InterfaceComposedSubCategory = store.getter("getComposedSubCategoryByExpenseCategory", { expenseCategory: expense.category });
 			const expenseElement = new ExpensesListItem(
 				expense,
@@ -33,7 +33,7 @@ class ExpensesListSection extends Component {
 		this.element.append(title, expensesContainer);
 	}
 
-	render() {
+	render = (): HTMLElement => {
 		return this.element;
 	}
 }

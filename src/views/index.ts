@@ -3,7 +3,7 @@ import { Home } from "./Home";
 
 const appRoot: HTMLElement = document.getElementById("appRoot");
 const viewsRoot: HTMLHeadElement = document.getElementById("viewsRoot");
-let currentView: string = "";
+let currentView = "";
 
 const allViews: Array<InterfaceView> = [
 	{

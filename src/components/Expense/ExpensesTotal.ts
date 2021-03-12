@@ -19,7 +19,7 @@ class ExpensesTotal extends Component {
 		this.element.append(this.amountElement, descriptionElement);
 	}
 
-	render() {
+	render = (): HTMLElement => {
 		const total = store.getter("getExpensesTotal");
 		this.amountElement.innerText = total;
 

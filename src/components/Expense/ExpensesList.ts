@@ -8,7 +8,7 @@ class ExpensesList extends Component {
 		this.element.classList.add("expenses-list");
 	}
 
-	render() {
+	render = (): HTMLElement => {
 		if (store.state.expenses.length) {
 			// Clear the element content
 			this.element.innerHTML = "";

@@ -34,7 +34,7 @@ class ExpensesListItem extends Component {
 		this.element.append(elementHeader, elementBody, elementFooter);
 	}
 
-	render() {
+	render = (): HTMLElement => {
 		return this.element;
 	}
 }

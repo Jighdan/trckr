@@ -16,8 +16,8 @@ const getters = {
 		return "$0.00";
 	},
 
-	getExpensesByDate(state: InterfaceState): object {
-		let composedExpensesByDate: {[index: string]:any} = {};
+	getExpensesByDate(state: InterfaceState): Record<string, unknown> {
+		const composedExpensesByDate: {[index: string]:any} = {};
 
 		const availableDates = state.expenses.map((expense) => composeDate(expense.dateAdded));
 		const setOfUniqueDates = new Set(availableDates);
