@@ -4,7 +4,7 @@ const state: InterfaceState = {
 	expenses: [],
 	categories: {},
 	types: {},
-	localStorageKey: "",
+	localStorageKey: "daily-tr.ck.r-app-state",
 };
 
 export { state };
