@@ -13,30 +13,41 @@ const allViews: Array<InterfaceView> = [
 	}
 ];
 
-const setCurrentView = (view: InterfaceView) => {
+const removeClassFromAllViews = (className: string): void => {
+	const allViews: NodeList = document.querySelectorAll("h2.view");
+	allViews.forEach((viewElement: HTMLHeadingElement) => viewElement.classList.remove(className));
+};
+
+const setCurrentView = (view: InterfaceView, element: HTMLHeadingElement): void => {
 	if (view.name !== currentView) {
+		removeClassFromAllViews("view-active");
+		element.classList.add("view-active");
+
 		appRoot.innerHTML = "";
 		view.callback(appRoot);
+		currentView = view.name;
 	}
 }
 
-const composeViewElement = (view: InterfaceView) => {
+const composeViewElement = (view: InterfaceView): HTMLHeadingElement => {
 	const element = document.createElement("h2");
+	element.classList.add("view");
 	element.innerText = view.name;
-	element.addEventListener("click", () => (setCurrentView.call(this, view)), true);
+	element.addEventListener("click", (event) => (setCurrentView.call(this, view,  event.target)), true);
 
 	return element;
 };
 
-const initializeViews = () => {
+const initializeViews = (): void => {
 	window.addEventListener("DOMContentLoaded", () => {
 		viewsRoot.append(...allViews.map(view => {
+			const element = composeViewElement(view);
+
 			if (view?.default) {
-				view.callback(appRoot);
-				currentView = view.name;
+				setCurrentView(view, element);
 			}
 
-			return composeViewElement(view);
+			return element;
 		}));
 	});
 };
