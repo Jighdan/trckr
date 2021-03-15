@@ -79,28 +79,36 @@ const defaultTypes: {[index: string]: InterfaceType} = {
 		icon: "./assets/icons/iconTypeFamily.svg"
 	},
 	"5": {
-		name: "General",
-		icon: "./assets/icons/iconTypeGeneral.svg"
+		name: "Food",
+		icon: "./assets/icons/iconTypeFood.svg"
 	},
 	"6": {
 		name: "Groceries",
 		icon: "./assets/icons/iconTypeGroceries.svg"
 	},
 	"7": {
+		name: "Other",
+		icon: "./assets/icons/iconTypeGeneral.svg"
+	},
+	"8": {
 		name: "Personal Care",
 		icon: "./assets/icons/iconTypePersonalCare.svg"
 	},
-	"8": {
+	"9": {
 		name: "Shopping",
 		icon: "./assets/icons/iconTypeShopping.svg"
 	},
-	"9": {
+	"10": {
 		name: "Transportation",
 		icon: "./assets/icons/iconTypeTransportation.svg"
 	},
-	"10": {
+	"11": {
 		name: "Trip",
 		icon: "./assets/icons/iconTypeTrip.svg"
+	},
+	"12": {
+		name: "Work",
+		icon: "./assets/icons/iconTypeWork.svg"
 	}
 };
 
