@@ -12,6 +12,8 @@ class CategoryList extends Component {
 	}
 
 	render = (): HTMLElement => {
+		this.element.innerHTML = "";
+
 		for (const categoryKey of Object.keys(store.state.categories)) {
 			const category = store.state.categories[categoryKey];
 			const categoryElement = CategoryListItem(categoryKey, category);
