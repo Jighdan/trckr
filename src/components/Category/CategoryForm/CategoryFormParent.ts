@@ -16,7 +16,7 @@ const composeCategoryFormParentItem = (categoryKey: string, categoryName: string
 	labelElement.style.color = categoryColor;
 	labelElement.innerText = categoryName;
 	
-	elementContainer.classList.add("category-form-parent-option");
+	elementContainer.classList.add("category-form-parent-options-item");
 	elementContainer.append(inputElement, labelElement);
 
 	return elementContainer;
@@ -24,16 +24,19 @@ const composeCategoryFormParentItem = (categoryKey: string, categoryName: string
 
 const CategoryFormParent = (categories: {[index: string]: InterfaceCategory}): HTMLDivElement => {
 	const element = document.createElement("div");
-	const elementOptions = Object.keys(categories).map(categoryKey => {
-		const category = categories[categoryKey];
-		const element = composeCategoryFormParentItem(categoryKey, category.name, category.color);
-		return element
+	const elementLegend = document.createElement("legend");
+	const elementOptions = document.createElement("div");
+
+	Object.keys(categories).map(categoryKey => {
+		const element = composeCategoryFormParentItem(categoryKey, categories[categoryKey].name, categories[categoryKey].color);
+		elementOptions.appendChild(element);
 	});
 
-	element.setAttribute("required", "true");
+	elementLegend.innerText = "How does spending on this category makes you feel?";
+	elementOptions.classList.add("category-form-parent-options");
 	element.classList.add("category-form-parent");
 
-	element.append(...elementOptions);
+	element.append(elementLegend, elementOptions);
 	return element;
 }
 
