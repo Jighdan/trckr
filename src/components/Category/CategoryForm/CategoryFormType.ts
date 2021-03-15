@@ -1,21 +1,12 @@
 import { InterfaceType } from "../../../models/Type";
-
-const composeCategoryFormTypeIcon = (iconPath: string): HTMLDivElement => {
-	const element = document.createElement("div");
-	element.classList.add("category-form-type-option-icon");
-	const maskUrl = `url(${iconPath}) no-repeat center`;
-	element.style.mask = maskUrl;
-	element.style.webkitMask = maskUrl;
-
-	return element;
-};
+import { TypeIcon } from "../../TypeIcon";
 
 const composeCategoryFormTypeOption = (typeId: string, type: InterfaceType): HTMLDivElement => {
 	const elementContainer = document.createElement("div");
 	const inputElement = document.createElement("input");
 	const labelElement = document.createElement("label");
 	const labelTextElement = document.createElement("span");
-	const iconElement = composeCategoryFormTypeIcon(type.icon);
+	const iconElement = TypeIcon(type.icon);
 
 	inputElement.setAttribute("type", "radio");
 	inputElement.setAttribute("name", "typeId");
@@ -23,6 +14,8 @@ const composeCategoryFormTypeOption = (typeId: string, type: InterfaceType): HTM
 	// Adding an `id` attribute so the input can be "checked" by clicking on the label
 	inputElement.setAttribute("id", type.name);
 	inputElement.setAttribute("required", "true");
+
+	iconElement.classList.add("category-form-type-option-icon");
 
 	labelTextElement.innerText = type.name;
 
