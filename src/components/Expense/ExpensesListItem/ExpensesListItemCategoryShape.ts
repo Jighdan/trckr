@@ -3,7 +3,7 @@ import { InterfaceType } from "../../../models/Type";
 const ExpenseListItemCategoryShapeIcon = (iconPath: string): HTMLDivElement => {
 	const element: HTMLDivElement = document.createElement("div");
 	element.classList.add("expenses-list-item-category-shape-icon");
-	const maskUrl: string = `url(${iconPath}) no-repeat center`;
+	const maskUrl = `url(${iconPath}) no-repeat center`;
 	element.style.mask = maskUrl;
 	element.style.webkitMask = maskUrl;
 	

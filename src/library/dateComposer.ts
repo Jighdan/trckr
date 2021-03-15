@@ -4,8 +4,8 @@ const composeDate = (date: Date | string): string => (
 		year: "numeric",
 		month: "short",
 		day: "numeric"
-	}));
-;
+	})
+);
 
 const composeTime = (time: Date | string): string => (
 	new Date(time).toLocaleTimeString(undefined, {

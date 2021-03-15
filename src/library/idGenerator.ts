@@ -1,10 +1,10 @@
 const generateId = (): string => {
-	const template: string = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx";
-	const regexPattern: RegExp = /[xy]/g;
+	const template = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx";
+	const regexPattern = /[xy]/g;
 
 	const id: string = template.replace(regexPattern, (character) => {
-		let randomNumber = (Math.random() * 16) | 0;
-		let vector = character == "x" ? randomNumber : (randomNumber & 0x3) | 0x8;
+		const randomNumber = (Math.random() * 16) | 0;
+		const vector = character == "x" ? randomNumber : (randomNumber & 0x3) | 0x8;
 		return vector.toString();
 	});
 
