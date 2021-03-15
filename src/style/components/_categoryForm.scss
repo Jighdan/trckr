@@ -1,0 +1,113 @@
+.category-form {
+	max-width: 500px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	legend {
+		margin-bottom: 0.15rem;
+		justify-self: start;
+		font-size: $font-sm;
+		font-weight: bold;
+		color: $color-gray-dark;
+	}
+
+	.input-box {
+		display: grid;
+		grid-template-rows: repeat(3, max-content);
+		gap: 0.8rem;
+		grid-gap: 0.8rem;
+	}
+
+	&-name {
+		margin-bottom: 0.5rem;
+		padding: 0.25rem 0.75rem;
+		background-color: $color-white;
+		border: 1px solid $color-gray-dark;
+		border-radius: 0.25rem;
+	}
+
+	&-parent {
+		display: flex;
+		justify-content: space-between;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		column-gap: 0.75rem;
+
+		&-option {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+
+			label {
+				text-align: center;
+				font-size: $font-sm;
+				font-weight: bold;
+				color: $color-gray-dark;
+				border-bottom: 5px solid $color-white;
+				cursor: pointer;
+			}
+
+			input[type="radio"] {
+				position: absolute;
+				visibility: hidden;
+
+				&:checked + label {
+					color: $color-black;
+					border-bottom: 5px solid currentColor;
+				}
+			}
+		}
+	}
+
+	&-type {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0.35rem;
+		grid-gap: 0.35rem;
+
+		&-option {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+
+			label {
+				padding: 0.25rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+
+				span {
+					font-size: $font-sm;
+					text-align: center;
+					color: $color-gray-dark;
+					border-bottom: 2.5px solid $color-white;
+				}
+			}
+
+			input[type="radio"] {
+				position: absolute;
+				visibility: hidden;
+
+				&:checked + label {
+					span {
+						color: $color-black;
+						border-bottom: 2.5px solid $color-black;
+					}
+				}
+			}
+
+			&-icon {
+				width: $font-xl;
+				height: $font-xl;
+				background-color: $color-black;
+			}
+		}
+	}
+}
