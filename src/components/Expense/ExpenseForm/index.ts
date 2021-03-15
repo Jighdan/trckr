@@ -4,7 +4,6 @@ import { ExpenseFormAmount } from "./ExpenseFormAmount";
 import { ExpenseFormCategory } from "./ExpenseFormCategory";
 
 class ExpenseForm extends Component {
-	hasRendered: boolean
 	inputAmount: HTMLInputElement
 	submitButton: HTMLButtonElement
 	inputCategory: HTMLSelectElement
