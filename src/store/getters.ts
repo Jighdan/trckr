@@ -1,52 +1,52 @@
 import { InterfaceState } from "../models/State";
-import { InterfaceExpenseCategory } from "../models/Expense";
-import { InterfaceSubCategory, InterfaceComposedSubCategory } from "../models/Category";
+import { InterfaceEntry } from "../models/Entry";
+import { InterfaceCategory } from "../models/Category";
 import { composeDate } from "../library/dateComposer";
 
 const getters = {
-	getExpensesTotal(state: InterfaceState): string {
-		if (state.expenses && state.expenses.length) {
-			const allExpensesAmount = state.expenses.map((expense) => expense.amount);
-			const total = allExpensesAmount.reduce(
-				(accumulator: number, amount: number) => accumulator + amount
+	allEntries(state: InterfaceState): Array<InterfaceEntry> | boolean {
+		if (state.entries.length) {
+			return state.entries;
+		}
+
+		return false;
+	},
+
+	allEntriesBySign(state: InterfaceState, { sign }: { sign: "+" | "-" }): Array<InterfaceEntry> | boolean {
+		if (state.entries.length) {
+			const entryConditioner = (entry: InterfaceEntry) => sign === "+" ? entry.amount > 0 : entry.amount < 0; 
+			return state.entries.filter(entry => entryConditioner(entry));
+		}
+
+		return false;
+	},
+
+	allEntriesByDate(state: InterfaceState): Record<string, unknown> | boolean {
+		if (state.entries.length) {
+			const composedEntriesByDate: {[ index: string ]: any } = {};
+			const availableDates = state.entries.map((entry => composeDate(entry.dateAdded)));
+			const setOfUniqueDates = new Set(availableDates);
+			const arrayOfUniqueDates = new Array(...setOfUniqueDates);
+
+			arrayOfUniqueDates.forEach(date => {
+				const formattedDate = composeDate(date);
+				const entriesByDate = state.entries.filter(entry => composeDate(entry.dateAdded) === date);
+				const sortedEntriesByTime = entriesByDate.sort((a, b): number => (
+					new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
+				)
 			);
-			return `$${total.toFixed(2)}`;
+
+			composedEntriesByDate[formattedDate] = sortedEntriesByTime;
+			});
+
+			return composedEntriesByDate;
 		}
 
-		return "$0.00";
+		return false;
 	},
 
-	getExpensesByDate(state: InterfaceState): Record<string, unknown> {
-		const composedExpensesByDate: {[index: string]:any} = {};
-
-		const availableDates = state.expenses.map((expense) => composeDate(expense.dateAdded));
-		const setOfUniqueDates = new Set(availableDates);
-		const arrayOfUniqueDates = new Array(...setOfUniqueDates);
-
-		arrayOfUniqueDates.forEach((date) => {
-			const formattedDate = composeDate(date);
-			const expensesByDate = state.expenses.filter((expense) => composeDate(expense.dateAdded) === date);
-			const sortedExpensesByTime = expensesByDate.sort((a, b): any => (
-				new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
-		));
-
-			composedExpensesByDate[formattedDate] = sortedExpensesByTime;
-		});
-
-		return composedExpensesByDate;
-	},
-
-	getComposedSubCategoryByExpenseCategory(state: InterfaceState, { expenseCategory }: { expenseCategory: InterfaceExpenseCategory }): InterfaceComposedSubCategory {
-		const subCategory: InterfaceSubCategory = state.categories[expenseCategory.name].subCategories.find(subCategory => (
-			subCategory.id === expenseCategory.subCategoryId
-		));
-
-		return {
-			id: subCategory.id,
-			name: subCategory.name,
-			color: state.categories[expenseCategory.name].color,
-			type: state.types[subCategory.typeId]
-		}
+	categoryById(state: InterfaceState, { categoryId }: { categoryId: string }): InterfaceCategory | boolean {
+		return state.categories.find(category => category.id === categoryId);
 	}
 };
 

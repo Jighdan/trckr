@@ -1,0 +1,60 @@
+.entries-list-item {
+	margin-top: 0.4rem;
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+
+	&-header {
+		.entries-list-item-category-shape {
+			height: $font-xxl;
+			width: $font-xxl;
+			border-width: 5px;
+			border-style: solid;
+			border-radius: 5px;
+			background-color: currentColor;
+
+			&-icon {
+				height: 100%;
+				width: 100%;
+				background-color: $color-white;
+			}
+		}
+	}
+
+	&-body {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+
+		.entries-list-item-name {
+			font-size: $font-sm;
+			font-weight: lighter;
+			color: $color-gray-dark;
+		}
+
+		.entries-list-item-amount {
+			font-size: $font-md;
+			font-weight: bold;
+
+			&-prefix {
+				&-positive {
+					color: $color-green;
+				}
+
+				&-negative {
+					color: $color-red;
+				}
+			}
+		}
+	}
+
+	&-footer {
+		align-self: flex-start;
+
+		.entries-list-item-time {
+			color: $color-gray-light;
+			font-size: $font-sm;
+			font-weight: lighter;
+			font-style: italic;
+		}
+	}
+}

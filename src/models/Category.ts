@@ -1,22 +1,8 @@
-import { InterfaceType } from "./Type";
-
 interface InterfaceCategory {
+	id: string;
 	name: string;
 	color: string;
-	subCategories: Array<InterfaceSubCategory>;
+	icon: string;
 }
 
-interface InterfaceSubCategory {
-	id: string | (() => string);
-	name: string;
-	typeId: string;
-}
-
-interface InterfaceComposedSubCategory {
-	id: string | (() => string);
-	name: string;
-	color: string;
-	type: InterfaceType;
-}
-
-export { InterfaceCategory, InterfaceSubCategory, InterfaceComposedSubCategory }
+export { InterfaceCategory }
