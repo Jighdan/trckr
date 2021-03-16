@@ -1,24 +1,16 @@
 import { InterfaceState } from "../models/State";
-import { InterfaceExpenseCategory } from "../models/Expense";
 import { generateId } from "../library/idGenerator";
 
 const mutations = {
-	addExpense(state: InterfaceState, { amount, category }: { amount: number, category: InterfaceExpenseCategory }): void {
-		state.expenses.push({
-			id: generateId(),
-			amount,
-			category,
-			dateAdded: new Date(),
-		});
-	},
-
-	addSubCategory(state: InterfaceState, { parentCategory, name, typeId }: { parentCategory: string, name: string, typeId: string }): void {
-		state.categories[parentCategory]?.subCategories.push({
+	addEntry(state: InterfaceState, { name, amount, categoryId }: { name: string, amount: number, categoryId: string }): void {
+		state.entries.push({
 			id: generateId(),
 			name,
-			typeId
-		})
-	},
+			amount,
+			categoryId,
+			dateAdded: new Date(),
+		});
+	}
 };
 
 export { mutations };

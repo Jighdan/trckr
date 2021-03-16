@@ -1,11 +1,9 @@
-import { InterfaceExpense } from "./Expense";
+import { InterfaceEntry } from "./Entry";
 import { InterfaceCategory } from "./Category";
-import { InterfaceType } from "./Type";
 
 interface InterfaceState {
-	expenses: Array<InterfaceExpense>;
-	categories: {[index: string]: InterfaceCategory};
-	types: {[index: string]: InterfaceType};
+	entries: Array<InterfaceEntry>;
+	categories: Array<InterfaceCategory>;
 	localStorageKey: string;
 }
 

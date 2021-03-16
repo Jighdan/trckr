@@ -1,6 +1,5 @@
 import { InterfaceView } from "../models/View";
 import { Home } from "./Home";
-import { Category } from "./Category";
 
 const appRoot: HTMLElement = document.getElementById("appRoot");
 const viewsRoot: HTMLHeadElement = document.getElementById("viewsRoot");
@@ -11,10 +10,6 @@ const allViews: Array<InterfaceView> = [
 		name: "Home",
 		callback: Home,
 		default: true
-	},
-	{
-		name: "Categories",
-		callback: Category
 	}
 ];
 

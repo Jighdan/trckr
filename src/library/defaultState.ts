@@ -1,121 +1,89 @@
 import { InterfaceState } from "../models/State";
-import { InterfaceCategory } from "../models/Category";
-import { InterfaceType } from "../models/Type";
-import { generateId } from "../library/idGenerator";
+import { generateId } from "./idGenerator";
+import { colors } from "./colors";
 
-const defaultCategories: {[index: string]: InterfaceCategory} = {
-	"happyTo": {
-		name: "Happy to",
-		color: "#264653",
-		subCategories: [
-			{
-				id: generateId(),
-				name: "Groceries",
-				typeId: "6"
-			}
-		]
+const categories = [
+	{
+		name: "Bills",
+		icon: "bills.svg"
 	},
-	"okayWith": {
-		name: "Okay with",
-		color: "#2A9D8F",
-		subCategories: [
-			{
-				id: generateId(),			
-				name: "Craft Supplies",
-				typeId: "3"
-			}
-		]
-	},
-	"haveTo": {
-		name: "Have to",
-		color: "#E9C46A",
-		subCategories: [
-			{
-				id: generateId(),
-				name: "Gas",
-				typeId: "1"
-			}
-		]
-	},
-	"ratherNot": {
-		name: "Would rather not",
-		color: "#F4A261",
-		subCategories: [
-			{
-				id: generateId(),
-				name: "Junk Food",
-				typeId: "6"
-			}
-		]
-	},
-	"shouldNot": {
-		name: "Shouldn't",
-		color: "#E76F51",
-		subCategories: [
-			{
-				id: generateId(),
-				name: "Clothes",
-				typeId: "8"
-			}
-		]
-	}
-}
-
-const defaultTypes: {[index: string]: InterfaceType} = {
-	"1": {
-		name: "Bill",
-		icon: "./assets/icons/iconTypeBill.svg"
-	},
-	"2": {
-		name: "Eating Out",
-		icon: "./assets/icons/iconTypeEatingOut.svg"
-	},
-	"3": {
+	{
 		name: "Entertainment",
-		icon: "./assets/icons/iconTypeEntertainment.svg"
+		icon: "entertainment.svg"
 	},
-	"4": {
+	{
 		name: "Family",
-		icon: "./assets/icons/iconTypeFamily.svg"
+		icon: "family.svg"
 	},
-	"5": {
-		name: "Food",
-		icon: "./assets/icons/iconTypeFood.svg"
+	{
+		name: "Food & Beverages",
+		icon: "food-and-beverages.svg"
 	},
-	"6": {
+	{
+		name: "Gifts",
+		icon: "gift.svg"
+	},
+	{
 		name: "Groceries",
-		icon: "./assets/icons/iconTypeGroceries.svg"
+		icon: "groceries.svg"
 	},
-	"7": {
-		name: "Other",
-		icon: "./assets/icons/iconTypeGeneral.svg"
+	{
+		name: "Health",
+		icon: "health.svg"
 	},
-	"8": {
-		name: "Personal Care",
-		icon: "./assets/icons/iconTypePersonalCare.svg"
+	{
+		name: "Household",
+		icon: "household.svg"
 	},
-	"9": {
+	{
+		name: "Snacks",
+		icon: "snack.svg"
+	},
+	{
+		name: "Personal Development",
+		icon: "personal-development.svg"
+	},
+	{
 		name: "Shopping",
-		icon: "./assets/icons/iconTypeShopping.svg"
+		icon: "shopping.svg"
 	},
-	"10": {
+	{
 		name: "Transportation",
-		icon: "./assets/icons/iconTypeTransportation.svg"
+		icon: "transportation.svg"
 	},
-	"11": {
-		name: "Trip",
-		icon: "./assets/icons/iconTypeTrip.svg"
+	{
+		name: "Trips",
+		icon: "trips.svg"
 	},
-	"12": {
+	{
 		name: "Work",
-		icon: "./assets/icons/iconTypeWork.svg"
+		icon: "work.svg"
+	},
+	{
+		name: "Other",
+		icon: "other.svg"
 	}
+];
+
+const defaultCategories = () => {
+	return categories.map(category => {
+		const id = generateId();
+		const color = colors[categories.indexOf(category)];
+		const icon = `./assets/icons/${category.icon}`;
+
+		return {
+			id,
+			name: category.name,
+			color,
+			icon
+		}
+	});
 };
 
+
 const defaultState: InterfaceState = {
-	expenses: [],
-	categories: defaultCategories,
-	types: defaultTypes,
+	entries: [],
+	categories: defaultCategories(),
 	localStorageKey: "daily-tr.ck.r-app-state"
 };
 

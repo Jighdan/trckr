@@ -11,18 +11,14 @@ const actions = {
 			context.state = storedState;
 			return true;
 		} else {
-			context.dispatch("setDefaultState", {});
+			context.state = defaultState;
 		}
 	},
 
 	setLocalStorageState(context: Store): void {
 		const { localStorageKey } = context.state;
 		localStorage.setItem(localStorageKey, JSON.stringify(context.state));
-	},
-
-	setDefaultState(context: Store): void {
-		context.state = defaultState;
-	},
+	}
 };
 
 export { actions };
