@@ -7,20 +7,29 @@
 	&-input-box {
 		margin-bottom: 0.5rem;
 		padding: 0.5rem 0.75rem;
+		display: grid;
+		grid-template-rows: repeat(3, 1fr);
+		gap: 0.75rem;
+		grid-gap: 0.75rem;
 		border: 1px solid rgba($color-gray-light, 0.5);
 		border-radius: 0.25rem;
 		overflow: hidden;
 
 		&-wrap {
-			display: flex;
-			align-items: center;
+			display: grid;
+			grid-template-columns: max-content max-content 1fr;
+			gap: 0.4rem;
+			grid-gap: 0.4rem;
 		}
 
 		.entry-form-control {
 			display: flex;
 			flex-direction: column;
+			border: none;
+			outline: none;
 
-			label {
+			label,
+			legend {
 				font-size: $font-sm;
 				color: $color-gray;
 			}
@@ -50,16 +59,23 @@
 			width: 100%;
 		}
 
-		.entry-form-name {
-			margin-bottom: 0.5rem;
-		}
+		.entry-form-type {
+			&-options {
+				display: grid;
+				grid-template-rows: 1fr 1fr;
+				gap: 0.2rem;
+				grid-gap: 0.2rem;
 
-		.entry-form-amount {
-			margin-left: 0.4rem;
-		}
+				&-item {
+					display: flex;
+					align-items: center;
 
-		.entry-form-category {
-			margin-top: 0.5rem;
+					input {
+						height: unset;
+						margin-right: 0.15rem;
+					}
+				}
+			}
 		}
 	}
 
