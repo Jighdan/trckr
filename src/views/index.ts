@@ -1,5 +1,5 @@
 import { InterfaceView } from "../models/View";
-import { Home } from "./Home";
+import { ViewHome } from "./ViewHome";
 
 const appRoot: HTMLElement = document.getElementById("appRoot");
 const viewsRoot: HTMLHeadElement = document.getElementById("viewsRoot");
@@ -8,7 +8,7 @@ let currentView = "";
 const allViews: Array<InterfaceView> = [
 	{
 		name: "Home",
-		callback: Home,
+		callback: ViewHome,
 		default: true
 	}
 ];
