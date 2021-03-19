@@ -31,12 +31,8 @@ const getters = {
 			arrayOfUniqueDates.forEach(date => {
 				const formattedDate = composeDate(date);
 				const entriesByDate = state.entries.filter(entry => composeDate(entry.dateAdded) === date);
-				const sortedEntriesByTime = entriesByDate.sort((a, b): number => (
-					new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
-				)
-			);
 
-			composedEntriesByDate[formattedDate] = sortedEntriesByTime;
+			composedEntriesByDate[formattedDate] = entriesByDate;
 			});
 
 			return composedEntriesByDate;
