@@ -23,7 +23,7 @@ const getters = {
 
 	allEntriesByDate(state: InterfaceState): Record<string, unknown> | boolean {
 		if (state.entries.length) {
-			const composedEntriesByDate: {[ index: string ]: any } = {};
+			const composedEntriesByDate: {[ index: string ]: Array<InterfaceEntry> } = {};
 			const availableDates = state.entries.map((entry => composeDate(entry.dateAdded)));
 			const setOfUniqueDates = new Set(availableDates);
 			const arrayOfUniqueDates = new Array(...setOfUniqueDates);

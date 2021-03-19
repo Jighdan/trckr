@@ -1,12 +1,19 @@
-const EntryFormAmount = (): HTMLInputElement => {
-	const element: HTMLInputElement = document.createElement("input");
-	element.classList.add("entry-form-amount");
-	element.setAttribute("type", "number");
-	element.setAttribute("aria-label", "Entry Amount");
-	element.setAttribute("name", "entryAmount");
-	element.setAttribute("step", "any");
-	element.setAttribute("placeholder", "Amount");
-	element.setAttribute("required", "true");
+import { EntryFormLabel } from "./EntryFormLabel";
+
+const EntryFormAmount = (): HTMLDivElement => {
+	const element = document.createElement("div");
+	const elementLabel = EntryFormLabel("Amount", "entryAmount");
+	const elementInput = document.createElement("input");
+
+	elementInput.setAttribute("placeholder", "How much was it?")
+	elementInput.setAttribute("type", "number");
+	elementInput.setAttribute("name", "entryAmount");
+	elementInput.setAttribute("step", "any");
+	elementInput.setAttribute("required", "true");
+
+	element.classList.add("entry-form-control", "entry-form-amount");
+	element.append(elementLabel, elementInput);
+
 
 	return element;
 }

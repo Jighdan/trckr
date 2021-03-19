@@ -4,59 +4,66 @@
 	flex-direction: column;
 	justify-content: center;
 
-	legend {
-		justify-self: start;
-		font-size: $font-sm;
-		font-weight: bold;
-		color: $color-gray-dark;
-	}
-
 	&-input-box {
 		margin-bottom: 0.5rem;
 		padding: 0.5rem 0.75rem;
-		background-color: $color-white;
-		border: 1px solid $color-gray-dark;
+		border: 1px solid rgba($color-gray-light, 0.5);
 		border-radius: 0.25rem;
 		overflow: hidden;
 
-		&-control {
+		&-wrap {
 			display: flex;
 			align-items: center;
+		}
 
-			&-prefix {
-				margin-right: 0.15rem;
-				font-weight: 300;
-				color: $color-gray-dark;
+		.entry-form-control {
+			display: flex;
+			flex-direction: column;
+
+			label {
+				font-size: $font-sm;
+				color: $color-gray;
+			}
+
+			input,
+			select {
+				height: 2.5rem;
+				padding: 0.5rem 0.75rem;
+				font-weight: bold;
+				color: $color-black;
+				border: 2px solid $color-white-light;
+				outline: none;
+				background-color: $color-white-light;
+				border-radius: 5px;
+				cursor: pointer;
+
+				&:active,
+				&:focus {
+					outline: none;
+					border-color: $color-black;
+				}
 			}
 		}
 
-		.entry-form-name {
+		.entry-form-name,
+		.entry-form-category {
 			width: 100%;
 		}
 
-		input,
-		select {
-			padding: 0.5rem 0.75rem;
-			font-weight: bold;
-			color: $color-black;
-			border: none;
-			outline: none;
-			background-color: inherit;
-			border-radius: 5px;
-			cursor: pointer;
-
-			&:active,
-			&:focus {
-				background-color: $color-white-light;
-				outline: none;
-				border: none;
-				border-width: none;
-			}
+		.entry-form-name {
+			margin-bottom: 0.5rem;
 		}
 
-		input {
-			flex-grow: 1;
-			color: $color-black;
+		.entry-form-amount {
+			margin-left: 0.4rem;
 		}
+
+		.entry-form-category {
+			margin-top: 0.5rem;
+		}
+	}
+
+	::placeholder {
+		color: $color-black;
 	}
 }
