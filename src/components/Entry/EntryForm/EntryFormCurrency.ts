@@ -1,12 +1,12 @@
 import { InterfaceCurrency } from "../../../models/Currency";
 import { EntryFormLabel } from "./EntryFormLabel";
 
-const EntryFormCurrencyOption = (name: string, code: string, selected?: boolean): HTMLOptionElement => {
+const EntryFormCurrencyOption = (currency: InterfaceCurrency): HTMLOptionElement => {
 	const element = document.createElement("option");
-	element.setAttribute("value", code);
-	element.setAttribute("label", code);
+	element.setAttribute("value", currency.code);
+	element.setAttribute("label", currency.code);
 
-	if (selected) {
+	if (currency.default) {
 		element.setAttribute("selected", "true");
 	}
 
@@ -17,7 +17,7 @@ const EntryFormCurrency = (currencies: Array<InterfaceCurrency>): HTMLDivElement
 	const element = document.createElement("div");
 	const elementSelect = document.createElement("select");
 	const elementLabel = EntryFormLabel("Currency", "entryCurrency");
-	const elementSelectOptions = currencies.map(currency => EntryFormCurrencyOption(currency.name, currency.code, currency.default));
+	const elementSelectOptions = currencies.map(currency => EntryFormCurrencyOption(currency));
 
 	elementSelect.setAttribute("name", "entryCurrency");
 	elementSelect.append(...elementSelectOptions);
