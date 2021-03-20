@@ -19,7 +19,6 @@ const defaultCategories = () => {
 	});
 };
 
-
 const defaultState: InterfaceState = {
 	entries: [],
 	categories: defaultCategories(),

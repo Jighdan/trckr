@@ -1,6 +1,7 @@
 import { InterfaceState } from "../models/State";
 import { InterfaceEntry } from "../models/Entry";
 import { InterfaceCategory } from "../models/Category";
+import { InterfaceDefaultSettings } from "../models/DefaultSettings";
 import { composeDate } from "../library/dateComposer";
 
 const getters = {
@@ -43,6 +44,14 @@ const getters = {
 
 	categoryById(state: InterfaceState, { categoryId }: { categoryId: string }): InterfaceCategory | boolean {
 		return state.categories.find(category => category.id === categoryId);
+	},
+
+	defaultSettings(state: InterfaceState): InterfaceDefaultSettings {
+		const defaultCurrency = state.currencies.find(currency => currency.default);
+
+		return {
+			defaultCurrency
+		}
 	}
 };
 

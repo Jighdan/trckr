@@ -1,0 +1,20 @@
+.settings-form {
+	display: grid;
+	grid-template-rows: repeat(2, max-content);
+	gap: 1rem;
+	grid-gap: 1rem;
+
+	.settings-control {
+		display: flex;
+		flex-direction: column;
+		justify-content: stretch;
+
+		&-title {
+			margin-bottom: 0.4rem;
+			font-size: $font-sm;
+			font-weight: bolder;
+			color: $color-gray;
+			border-bottom: 2px solid rgba($color-gray-light, 0.5);
+		}
+	}
+}

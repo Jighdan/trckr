@@ -23,6 +23,11 @@ select {
 	}
 }
 
+fieldset {
+	border: none;
+	outline: none;
+}
+
 ::placeholder {
 	color: $color-black;
 }

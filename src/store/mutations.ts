@@ -16,6 +16,17 @@ const mutations = {
 			categoryId,
 			dateAdded: new Date(),
 		});
+	},
+
+	setDefaultCurrency(state: InterfaceState, { currencyCode }: { currencyCode: string }): void {
+		const currentDefaultCurrency = state.currencies.find(currency => currency.default);
+		const currentDefaultCurrencyIndex = state.currencies.indexOf(currentDefaultCurrency);
+		delete state.currencies[currentDefaultCurrencyIndex].default;
+
+		const newDefaultCurrency = state.currencies.find(currency => currency.code === currencyCode);
+		const newDefaultCurrencyIndex = state.currencies.indexOf(newDefaultCurrency);
+
+		state.currencies[newDefaultCurrencyIndex].default = true;
 	}
 };
 
