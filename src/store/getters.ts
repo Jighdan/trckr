@@ -1,6 +1,7 @@
 import { InterfaceState } from "../models/State";
 import { InterfaceEntry } from "../models/Entry";
 import { InterfaceCategory } from "../models/Category";
+import { InterfaceDefaultSettings } from "../models/DefaultSettings";
 import { composeDate } from "../library/dateComposer";
 
 const getters = {
@@ -23,7 +24,7 @@ const getters = {
 
 	allEntriesByDate(state: InterfaceState): Record<string, unknown> | boolean {
 		if (state.entries.length) {
-			const composedEntriesByDate: {[ index: string ]: any } = {};
+			const composedEntriesByDate: {[ index: string ]: Array<InterfaceEntry> } = {};
 			const availableDates = state.entries.map((entry => composeDate(entry.dateAdded)));
 			const setOfUniqueDates = new Set(availableDates);
 			const arrayOfUniqueDates = new Array(...setOfUniqueDates);
@@ -31,12 +32,8 @@ const getters = {
 			arrayOfUniqueDates.forEach(date => {
 				const formattedDate = composeDate(date);
 				const entriesByDate = state.entries.filter(entry => composeDate(entry.dateAdded) === date);
-				const sortedEntriesByTime = entriesByDate.sort((a, b): number => (
-					new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
-				)
-			);
 
-			composedEntriesByDate[formattedDate] = sortedEntriesByTime;
+			composedEntriesByDate[formattedDate] = entriesByDate;
 			});
 
 			return composedEntriesByDate;
@@ -47,6 +44,14 @@ const getters = {
 
 	categoryById(state: InterfaceState, { categoryId }: { categoryId: string }): InterfaceCategory | boolean {
 		return state.categories.find(category => category.id === categoryId);
+	},
+
+	defaultSettings(state: InterfaceState): InterfaceDefaultSettings {
+		const defaultCurrency = state.currencies.find(currency => currency.default);
+
+		return {
+			defaultCurrency
+		}
 	}
 };
 

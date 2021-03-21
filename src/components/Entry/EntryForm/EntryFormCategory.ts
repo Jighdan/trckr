@@ -1,4 +1,5 @@
 import { InterfaceCategory } from "../../../models/Category";
+import { EntryFormLabel } from "./EntryFormLabel";
 
 const EntryFormCategoryOption = (category: InterfaceCategory): HTMLOptionElement => {
 	const element = document.createElement("option");
@@ -14,15 +15,18 @@ const EntryFormCategoryOption = (category: InterfaceCategory): HTMLOptionElement
 };
 
 
-const EntryFormCategory = (categories: Array<InterfaceCategory>): HTMLSelectElement => {
-	const element = document.createElement("select");
-	const elementOptions = categories.map(category => EntryFormCategoryOption(category));
+const EntryFormCategory = (categories: Array<InterfaceCategory>): HTMLDivElement => {
+	const element = document.createElement("div");
+	const elementLabel = EntryFormLabel("Category", "entryCategory");
+	const elementSelect = document.createElement("select");
+	const elementSelectOptions = categories.map(category => EntryFormCategoryOption(category));
 
-	element.classList.add("entry-form-category");
-	element.setAttribute("aria-label", "Entry Category");
-	element.setAttribute("name", "entryCategory");
-	element.setAttribute("required", "true");
-	element.append(...elementOptions);
+	elementSelect.setAttribute("name", "entryCategory");
+	elementSelect.setAttribute("required", "true");
+	elementSelect.append(...elementSelectOptions);
+
+	element.classList.add("entry-form-control", "entry-form-category");
+	element.append(elementLabel, elementSelect);
 
 	return element;
 };

@@ -1,5 +1,6 @@
 import { InterfaceState } from "../models/State";
 import { categories } from "./categories";
+import { defaultCurrencies } from "./defaultCurrencies";
 import { colors } from "./colors";
 import { generateId } from "./idGenerator";
 
@@ -18,10 +19,10 @@ const defaultCategories = () => {
 	});
 };
 
-
 const defaultState: InterfaceState = {
 	entries: [],
 	categories: defaultCategories(),
+	currencies: defaultCurrencies,
 	localStorageKey: "daily-tr.ck.r-app-state"
 };
 

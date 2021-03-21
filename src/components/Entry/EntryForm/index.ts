@@ -1,66 +1,57 @@
 import { Component } from "../../Component";
 import { store } from "../../../store/index";
 import { EntryFormName } from "./EntryFormName";
+import { EntryFormType } from "./EntryFormType";
+import { EntryFormCurrency } from "./EntryFormCurrency";
 import { EntryFormAmount } from "./EntryFormAmount";
 import { EntryFormCategory } from "./EntryFormCategory";
 
 class EntryForm extends Component {
-	inputName: HTMLInputElement;
-	inputAmount: HTMLInputElement;
-	inputCategory: HTMLSelectElement;
-	submitButton: HTMLButtonElement;
-
 	constructor() {
 		super(document.createElement("form"), store, true);
 
-		// Setting up the form legend
-		const legend = document.createElement("legend");
-		legend.innerText = "New Entry";
+		const inputName = EntryFormName();
+		const inputSign = EntryFormType();
+		const inputCurrency = EntryFormCurrency(store.state.currencies);
+		const inputAmount = EntryFormAmount();
+		const inputCategory = EntryFormCategory(store.state.categories);
 
-		// Setting up the form inputs
-		this.inputName = EntryFormName();
-		this.inputAmount = EntryFormAmount();
-		this.inputCategory = EntryFormCategory(store.state.categories);
+		const submitButton = document.createElement("button");
+		submitButton.classList.add("button");
+		submitButton.setAttribute("type", "submit");
+		submitButton.innerText = "Add Entry";
 
-		// Setting up the form submit button
-		this.submitButton = document.createElement("button");
-		this.submitButton.classList.add("button");
-		this.submitButton.setAttribute("type", "submit");
-		this.submitButton.innerText = "Add Expense";
+		const formWrap = document.createElement("div");
+		formWrap.classList.add("entry-form-input-box-wrap");
+		formWrap.append(inputSign, inputCurrency, inputAmount);
 
-		// Setting up a prefix for the input
-		const prefix = document.createElement("span");
-		prefix.classList.add("entry-form-input-box-control-prefix");
-		prefix.innerText = "$";
-
-		// Wrap the prefix and the input altogether
-		const formControl = document.createElement("div");
-		formControl.classList.add("entry-form-input-box-control");
-		formControl.append(prefix, this.inputAmount, this.inputCategory);
-
-		// Wrap all the inputs altogether
 		const inputBox = document.createElement("div");
 		inputBox.classList.add("entry-form-input-box");
-		inputBox.append(this.inputName, formControl);
+		inputBox.append(inputName, formWrap, inputCategory);
 
-		// Wrap the element
 		this.element.classList.add("entry-form");
-		this.element.append(legend, inputBox, this.submitButton);
+		this.element.append(inputBox, submitButton);
 	}
 
 	onSubmit(event: Event): void {
 		event.preventDefault();
 
-		const entryName = this.inputName.value;
-		const entryAmount = this.inputAmount.valueAsNumber;
-		const entryCategoryId = this.inputCategory.value;
+		const { elements } = this.element;
+	
+		const entryName = elements.entryName.value;
+		const entryType = elements.entryType.value;
+		const entryCurrency = elements.entryCurrency.value;
+		const entryAmount = elements.entryAmount.valueAsNumber;
+		const entryCategoryId = elements.entryCategory.value;
 
-		if (entryName && entryAmount && entryCategoryId) {
-			this.inputName.value = "";
-			this.inputAmount.value = "";
+		if (entryName && entryType && entryCurrency && entryAmount && entryCategoryId) {
+			this.element.elements.entryName.value = "";
+			this.element.elements.entryAmount.value = "";
 
 			const entry = {
 				name: entryName,
+				type: entryType,
+				currency: entryCurrency,
 				amount: entryAmount,
 				categoryId: entryCategoryId
 			};
