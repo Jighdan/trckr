@@ -19,7 +19,7 @@ const EntryFormCurrency = (currencies: Array<InterfaceCurrency>): HTMLDivElement
 	const elementLabel = EntryFormLabel("Currency", "entryCurrencyCode");
 	const elementSelectOptions = currencies.map(currency => EntryFormCurrencyOption(currency));
 
-	elementSelect.setAttribute("name", "entryCurrency");
+	elementSelect.setAttribute("name", "entryCurrencyCode");
 	elementSelect.append(...elementSelectOptions);
 
 	element.classList.add("entry-form-control", "entry-form-currency");
