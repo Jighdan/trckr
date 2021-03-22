@@ -1,6 +1,6 @@
-import { Component } from "../Component";
-import { store } from "../../store/index";
-import { InterfaceEntry } from "../../models/Entry";
+import { Component } from "../../Component";
+import { store } from "../../../store/index";
+import { InterfaceEntry } from "../../../models/Entry";
 import { EntriesListItem } from "./EntriesListItem/index";
 
 class EntriesListSection extends Component {

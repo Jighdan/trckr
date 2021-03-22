@@ -1,4 +1,4 @@
-import { Icon } from "../../Icon";
+import { Icon } from "../../../Icon";
 
 const EntriesListItemCategoryShape = (categoryColor: string, categoryIcon: string): HTMLDivElement => {
 	const iconElement = Icon(categoryIcon);

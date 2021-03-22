@@ -1,10 +1,10 @@
 import { EntryForm } from "../components/Entry/EntryForm/index";
-import { EntriesList } from "../components/Entry/EntriesList";
+import { EntriesPanel } from "../components/Entry/EntriesPanel/index";
 
 const ViewHome = (root: HTMLElement): void => {
 	const instanceOfEntryForm = new EntryForm();
-	const instanceOfEntriesList = new EntriesList();
-	const instances = [instanceOfEntryForm, instanceOfEntriesList].map(instance => instance.render());
+	const instanceOfEntriesPanel = new EntriesPanel();
+	const instances = [instanceOfEntryForm, instanceOfEntriesPanel].map(instance => instance.render());
 
 	const viewElement = document.createElement("div");
 	viewElement.setAttribute("id", "view-home");
