@@ -1,42 +1,13 @@
 import { InterfaceState } from "../models/State";
-import { InterfaceEntry } from "../models/Entry";
 import { InterfaceCategory } from "../models/Category";
 import { InterfaceDefaultSettings } from "../models/DefaultSettings";
-import { composeDate } from "../library/dateComposer";
+import { composeEntries } from "../library/entriesComposer";
 
 const getters = {
-	allEntries(state: InterfaceState): Array<InterfaceEntry> | boolean {
-		if (state.entries.length) {
-			return state.entries;
-		}
-
-		return false;
-	},
-
-	allEntriesBySign(state: InterfaceState, { sign }: { sign: "+" | "-" }): Array<InterfaceEntry> | boolean {
-		if (state.entries.length) {
-			const entryConditioner = (entry: InterfaceEntry) => sign === "+" ? entry.amount > 0 : entry.amount < 0; 
-			return state.entries.filter(entry => entryConditioner(entry));
-		}
-
-		return false;
-	},
-
 	allEntriesByDate(state: InterfaceState): Record<string, unknown> | boolean {
 		if (state.entries.length) {
-			const composedEntriesByDate: {[ index: string ]: Array<InterfaceEntry> } = {};
-			const availableDates = state.entries.map((entry => composeDate(entry.dateAdded)));
-			const setOfUniqueDates = new Set(availableDates);
-			const arrayOfUniqueDates = new Array(...setOfUniqueDates);
-
-			arrayOfUniqueDates.forEach(date => {
-				const formattedDate = composeDate(date);
-				const entriesByDate = state.entries.filter(entry => composeDate(entry.dateAdded) === date);
-
-			composedEntriesByDate[formattedDate] = entriesByDate;
-			});
-
-			return composedEntriesByDate;
+			const defaultCurrency = state.currencies.find(currency => currency.default);
+			return composeEntries(state.entries, defaultCurrency);
 		}
 
 		return false;

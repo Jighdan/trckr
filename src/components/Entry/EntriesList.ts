@@ -9,9 +9,7 @@ class EntriesList extends Component {
 	}
 
 	render = (): HTMLElement => {
-		const entries = store.getter("allEntries");
-
-		if (entries) {
+		if (store.state.entries.length) {
 			// Clear the element content
 			this.element.innerHTML = "";
 

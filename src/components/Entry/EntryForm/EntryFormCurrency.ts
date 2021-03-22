@@ -16,10 +16,10 @@ const EntryFormCurrencyOption = (currency: InterfaceCurrency): HTMLOptionElement
 const EntryFormCurrency = (currencies: Array<InterfaceCurrency>): HTMLDivElement => {
 	const element = document.createElement("div");
 	const elementSelect = document.createElement("select");
-	const elementLabel = EntryFormLabel("Currency", "entryCurrency");
+	const elementLabel = EntryFormLabel("Currency", "entryCurrencyCode");
 	const elementSelectOptions = currencies.map(currency => EntryFormCurrencyOption(currency));
 
-	elementSelect.setAttribute("name", "entryCurrency");
+	elementSelect.setAttribute("name", "entryCurrencyCode");
 	elementSelect.append(...elementSelectOptions);
 
 	element.classList.add("entry-form-control", "entry-form-currency");
