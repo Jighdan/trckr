@@ -1,0 +1,12 @@
+#view-home {
+	display: grid;
+	gap: 1rem;
+	grid-gap: 1rem;
+}
+
+#view-settings {
+	width: 400px;
+	max-width: 100%;
+	display: flex;
+	flex-direction: column;
+}
