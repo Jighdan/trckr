@@ -1,5 +1,5 @@
 import { InterfaceCategory } from "../../../models/Category";
-import { EntryFormLabel } from "./EntryFormLabel";
+import { FormLabel } from "../../Form";
 
 const EntryFormCategoryOption = (category: InterfaceCategory): HTMLOptionElement => {
 	const element = document.createElement("option");
@@ -17,7 +17,7 @@ const EntryFormCategoryOption = (category: InterfaceCategory): HTMLOptionElement
 
 const EntryFormCategory = (categories: Array<InterfaceCategory>): HTMLDivElement => {
 	const element = document.createElement("div");
-	const elementLabel = EntryFormLabel("Category", "entryCategory");
+	const elementLabel = FormLabel("Category", "entryCategory");
 	const elementSelect = document.createElement("select");
 	const elementSelectOptions = categories.map(category => EntryFormCategoryOption(category));
 

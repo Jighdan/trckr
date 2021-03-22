@@ -1,8 +1,8 @@
-import { EntryFormLabel } from "./EntryFormLabel";
+import { FormLabel } from "../../Form";
 
 const EntryFormTypeItem = (inputName: string, inputValue: string, isDefault?: boolean): HTMLDivElement => {
 	const element = document.createElement("div");
-	const elementLabel = EntryFormLabel(inputName, inputName);
+	const elementLabel = FormLabel(inputName, inputName);
 	const elementInput = document.createElement("input");
 
 	elementInput.setAttribute("type", "radio");

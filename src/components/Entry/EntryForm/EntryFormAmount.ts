@@ -1,8 +1,8 @@
-import { EntryFormLabel } from "./EntryFormLabel";
+import { FormLabel } from "../../Form";
 
 const EntryFormAmount = (): HTMLDivElement => {
 	const element = document.createElement("div");
-	const elementLabel = EntryFormLabel("Amount", "entryAmount");
+	const elementLabel = FormLabel("Amount", "entryAmount");
 	const elementInput = document.createElement("input");
 
 	elementInput.setAttribute("placeholder", "How much was it?")
