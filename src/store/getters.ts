@@ -5,14 +5,6 @@ import { InterfaceDefaultSettings } from "../models/DefaultSettings";
 import { composeEntries, filterEntries } from "../library/entriesComposer";
 
 const getters = {
-	allEntries(state: InterfaceState): Array<InterfaceEntry> | boolean {
-		if (state.entries.length) {
-			return state.entries;
-		}
-
-		return false;
-	},
-
 	allEntriesBySign(state: InterfaceState, { sign }: { sign: "+" | "-" }): Record<string, Array<InterfaceEntry>> | boolean {
 		if (state.entries.length) {
 			return filterEntries.bySign(state.entries, sign);
