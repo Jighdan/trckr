@@ -4,13 +4,19 @@ const defaultCurrencies: Array<InterfaceCurrency> = [
 	{
 		code: "USD",
 		name: "US Dollars",
-		value: 1,
+		from: {
+			USD: 1,
+			DOP: 0.01755
+		},
 		default: true
 	},
 	{
 		code: "DOP",
 		name: "Dominican Pesos",
-		value: 57.3462
+		from: {
+			USD: 57.3462,
+			DOP: 1
+		}
 	}
 ];
 

@@ -1,7 +1,7 @@
 interface InterfaceCurrency {
 	code: string;
 	name: string;
-	value: number;
+	from: {[index: string]: number};
 	default?: boolean;
 }
 

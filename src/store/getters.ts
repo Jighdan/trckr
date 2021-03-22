@@ -1,21 +1,13 @@
 import { InterfaceState } from "../models/State";
-import { InterfaceEntry } from "../models/Entry";
 import { InterfaceCategory } from "../models/Category";
 import { InterfaceDefaultSettings } from "../models/DefaultSettings";
-import { composeEntries, filterEntries } from "../library/entriesComposer";
+import { composeEntries } from "../library/entriesComposer";
 
 const getters = {
-	allEntriesBySign(state: InterfaceState, { sign }: { sign: "+" | "-" }): Record<string, Array<InterfaceEntry>> | boolean {
-		if (state.entries.length) {
-			return filterEntries.bySign(state.entries, sign);
-		}
-
-		return false;
-	},
-
 	allEntriesByDate(state: InterfaceState): Record<string, unknown> | boolean {
 		if (state.entries.length) {
-			return composeEntries.byDate(state.entries);
+			const defaultCurrency = state.currencies.find(currency => currency.default);
+			return composeEntries(state.entries, defaultCurrency);
 		}
 
 		return false;
