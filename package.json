@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack --watch",
-    "build": "webpack; yarn build:scss",
+    "build": "webpack && yarn build:scss",
     "dev:scss": "dart-sass ./src/style/index.scss ./build/style.css --no-source-map --watch",
     "build:scss": "dart-sass ./src/style/index.scss ./build/style.css"
   },
