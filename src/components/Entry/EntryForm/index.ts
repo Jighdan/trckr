@@ -40,18 +40,18 @@ class EntryForm extends Component {
 	
 		const entryName = elements.entryName.value;
 		const entryType = elements.entryType.value;
-		const entryCurrency = elements.entryCurrency.value;
+		const entryCurrencyCode = elements.entryCurrencyCode.value;
 		const entryAmount = elements.entryAmount.valueAsNumber;
 		const entryCategoryId = elements.entryCategory.value;
 
-		if (entryName && entryType && entryCurrency && entryAmount && entryCategoryId) {
+		if (entryName && entryType && entryCurrencyCode && entryAmount && entryCategoryId) {
 			this.element.elements.entryName.value = "";
 			this.element.elements.entryAmount.value = "";
 
 			const entry = {
 				name: entryName,
 				type: entryType,
-				currency: entryCurrency,
+				currencyCode: entryCurrencyCode,
 				amount: entryAmount,
 				categoryId: entryCategoryId
 			};
