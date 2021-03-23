@@ -32,7 +32,7 @@ const EntryFormType = (): HTMLFieldSetElement => {
 	elementOptionsContainer.classList.add("entry-form-type-options");
 	elementOptionsContainer.append(...elementOptions);
 
-	element.classList.add("entry-form-control", "entry-form-type");
+	element.classList.add("form-control", "entry-form-type");
 	element.append(elementLegend, elementOptionsContainer);
 
 	return element

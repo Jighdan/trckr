@@ -11,7 +11,7 @@ const EntryFormName = (): HTMLDivElement => {
 	elementInput.setAttribute("placeholder", "A short but descriptive name");
 	elementInput.setAttribute("required", "true");
 
-	element.classList.add("entry-form-control", "entry-form-name");
+	element.classList.add("form-control", "entry-form-name");
 	element.append(elementLabel, elementInput);
 
 	return element;

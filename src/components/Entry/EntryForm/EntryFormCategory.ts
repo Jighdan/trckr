@@ -16,7 +16,7 @@ const EntryFormCategory = (categories: Array<InterfaceCategory>): HTMLDivElement
 
 	elementSelect.setAttribute("required", "true");
 
-	element.classList.add("entry-form-control", "entry-form-category");
+	element.classList.add("form-control", "entry-form-category");
 	element.append(elementLabel, elementSelect);
 
 	return element;

@@ -15,7 +15,7 @@ const EntryFormCurrency = (currencies: Array<InterfaceCurrency>): HTMLDivElement
 	const elementLabel = FormLabel("Currency", elementName);
 
 	elementSelect.setAttribute("required", "true");
-	element.classList.add("entry-form-control", "entry-form-currency");
+	element.classList.add("form-control", "entry-form-currency");
 	element.append(elementLabel, elementSelect);
 	return element;
 };
