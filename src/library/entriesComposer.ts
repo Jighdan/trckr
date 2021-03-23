@@ -12,19 +12,19 @@ const formatEntriesByCurrency = (entries: Array<InterfaceEntry>, defaultCurrency
 )
 
 const composeEntries = (entries: Array<InterfaceEntry>, defaultCurrency: InterfaceCurrency): Record<string, Array<InterfaceEntry>> => {
-		const formattedEntriesAmount = formatEntriesByCurrency(entries, defaultCurrency);
-		const composedEntriesByDate: {[ index: string ]: Array<InterfaceEntry> } = {};
-		const availableDates = entries.map((entry => composeDate(entry.dateAdded)));
-		const setOfUniqueDates = new Set(availableDates);
-		const arrayOfUniqueDates = new Array(...setOfUniqueDates);
+	const formattedEntriesAmount = formatEntriesByCurrency(entries, defaultCurrency);
+	const composedEntriesByDate: {[ index: string ]: Array<InterfaceEntry> } = {};
+	const availableDates = entries.map((entry => composeDate(entry.dateAdded)));
+	const setOfUniqueDates = new Set(availableDates);
+	const arrayOfUniqueDates = new Array(...setOfUniqueDates);
 
-		arrayOfUniqueDates.forEach(date => {
-			const formattedDate = composeDate(date);
-			const entriesByDate = formattedEntriesAmount.filter(entry => composeDate(entry.dateAdded) === date);
-			composedEntriesByDate[formattedDate] = entriesByDate;
-		});
+	arrayOfUniqueDates.forEach(date => {
+		const formattedDate = composeDate(date);
+		const entriesByDate = formattedEntriesAmount.filter(entry => composeDate(entry.dateAdded) === date);
+		composedEntriesByDate[formattedDate] = entriesByDate;
+	});
 
-		return composedEntriesByDate;
+	return composedEntriesByDate;
 };
 
 export { composeEntries };

@@ -1,9 +1,9 @@
-import { EntryFormLabel } from "./EntryFormLabel";
+import { FormLabel } from "../../Form";
 
 const EntryFormName = (): HTMLDivElement => {
 	const element = document.createElement("div");
 	const elementInput= document.createElement("input");
-	const elementLabel = EntryFormLabel("Name", "entryName");
+	const elementLabel = FormLabel("Name", "entryName");
 
 	elementInput.setAttribute("type", "text");
 	elementInput.setAttribute("name", "entryName");

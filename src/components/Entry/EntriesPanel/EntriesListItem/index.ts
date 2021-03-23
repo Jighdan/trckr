@@ -1,6 +1,6 @@
 
-import { InterfaceEntry } from "../../../models/Entry";
-import { InterfaceCategory } from "../../../models/Category";
+import { InterfaceEntry } from "../../../../models/Entry";
+import { InterfaceCategory } from "../../../../models/Category";
 import { EntriesListItemName } from "./EntriesListItemName";
 import { EntriesListItemAmount } from "./EntriesListItemAmount";
 import { EntriesListItemCategoryTitle } from "./EntriesListItemCategoryTitle";
