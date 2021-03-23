@@ -36,8 +36,8 @@ class SettingsForm extends Component {
 		store.commit("setDefaultCurrency", settings);
 	}
 
-	setSettingElements(state: InterfaceState, settings: InterfaceDefaultSettings): void {
-		const settingCurrency = SettingCurrency(state.currencies, settings.defaultCurrency);
+	setSettingElements(state: InterfaceState): void {
+		const settingCurrency = SettingCurrency(state.currencies);
 
 		this.settingsBoxElement.innerHTML = "";
 		this.settingsBoxElement.append(settingCurrency);
@@ -48,7 +48,7 @@ class SettingsForm extends Component {
 	}
 
 	render = (): HTMLElement => {
-		this.setSettingElements(store.state, store.getter("defaultSettings"));
+		this.setSettingElements(store.state);
 
 		if (!this.hasRendered) {
 			this.setEvents();

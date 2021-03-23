@@ -3,6 +3,7 @@ interface InterfaceCategory {
 	name: string;
 	color: string;
 	icon: string;
+	isDefault?: boolean;
 }
 
 export { InterfaceCategory }

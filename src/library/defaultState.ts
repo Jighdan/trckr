@@ -9,12 +9,14 @@ const defaultCategories = () => {
 		const id = generateId();
 		const color = colors[categories.indexOf(category)];
 		const icon = `./assets/icons/${category.icon}`;
+		const isDefault = category.name === "Other" ? true : false;
 
 		return {
 			id,
 			name: category.name,
 			color,
-			icon
+			icon,
+			isDefault
 		}
 	});
 };

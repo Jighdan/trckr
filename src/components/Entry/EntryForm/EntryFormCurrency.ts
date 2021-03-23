@@ -1,27 +1,20 @@
 import { InterfaceCurrency } from "../../../models/Currency";
-import { FormLabel } from "../../Form";
-
-const EntryFormCurrencyOption = (currency: InterfaceCurrency): HTMLOptionElement => {
-	const element = document.createElement("option");
-	element.setAttribute("value", currency.code);
-	element.setAttribute("label", currency.code);
-
-	if (currency.default) {
-		element.setAttribute("selected", "true");
-	}
-
-	return element;
-};
+import { InterfaceFormSelectOption } from "../../../models/Form";
+import { FormLabel, FormSelect } from "../../Form";
 
 const EntryFormCurrency = (currencies: Array<InterfaceCurrency>): HTMLDivElement => {
+	const formattedCurrencies: Array<InterfaceFormSelectOption> = currencies.map(currency => ({
+		value: currency.code,
+		label: currency.code,
+		isDefault: currency.default,
+	}));
+
 	const element = document.createElement("div");
-	const elementSelect = document.createElement("select");
-	const elementLabel = FormLabel("Currency", "entryCurrencyCode");
-	const elementSelectOptions = currencies.map(currency => EntryFormCurrencyOption(currency));
+	const elementName = "entryCurrencyCode"
+	const elementSelect = FormSelect(elementName, formattedCurrencies);
+	const elementLabel = FormLabel("Currency", elementName);
 
-	elementSelect.setAttribute("name", "entryCurrencyCode");
-	elementSelect.append(...elementSelectOptions);
-
+	elementSelect.setAttribute("required", "true");
 	element.classList.add("entry-form-control", "entry-form-currency");
 	element.append(elementLabel, elementSelect);
 	return element;
