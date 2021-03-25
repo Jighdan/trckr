@@ -5,6 +5,10 @@ form {
 		color: $color-gray;
 	}
 
+	legend {
+		font-weight: bold;
+	}
+
 	input,
 	select {
 		height: 2.5rem;
