@@ -1,4 +1,4 @@
-interface InterfaceCategory {
+interface Category {
 	id: string;
 	name: string;
 	color: string;
@@ -6,4 +6,4 @@ interface InterfaceCategory {
 	isDefault?: boolean;
 }
 
-export { InterfaceCategory }
+export { Category }

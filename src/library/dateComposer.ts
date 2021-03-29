@@ -1,5 +1,5 @@
-const composeDate = (date: Date | string): string => (
-	new Date(date).toLocaleDateString(undefined, {
+const composeDate = (date: Date | string, options?: Intl.DateTimeFormatOptions): string => (
+	new Date(date).toLocaleDateString(undefined, options ? options : {
 		weekday: "long",
 		year: "numeric",
 		month: "short",

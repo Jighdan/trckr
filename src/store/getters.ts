@@ -1,10 +1,10 @@
-import { InterfaceState } from "../models/State";
-import { InterfaceCategory } from "../models/Category";
-import { InterfaceDefaultSettings } from "../models/DefaultSettings";
+import { State } from "../types/state";
+import { Category } from "../types/category";
+import { DefaultSettings } from "../types/defaultSettings";
 import { composeEntries } from "../library/entriesComposer";
 
 const getters = {
-	allEntriesByDate(state: InterfaceState): Record<string, unknown> | boolean {
+	allEntriesByDate(state: State): Record<string, unknown> | boolean {
 		if (state.entries.length) {
 			const defaultCurrency = state.currencies.find(currency => currency.default);
 			return composeEntries(state.entries, defaultCurrency);
@@ -13,11 +13,11 @@ const getters = {
 		return false;
 	},
 
-	categoryById(state: InterfaceState, { categoryId }: { categoryId: string }): InterfaceCategory | boolean {
+	categoryById(state: State, { categoryId }: { categoryId: string }): Category | boolean {
 		return state.categories.find(category => category.id === categoryId);
 	},
 
-	defaultSettings(state: InterfaceState): InterfaceDefaultSettings {
+	defaultSettings(state: State): DefaultSettings {
 		const defaultCurrency = state.currencies.find(currency => currency.default);
 
 		return {

@@ -1,4 +1,4 @@
-import { InterfaceFormSelectOption } from "../models/Form";
+import { FormSelectOption } from "../types/formElements";
 
 const FormLabel = (title: string, inputName: string): HTMLLabelElement => {
 	const element = document.createElement("label");
@@ -8,7 +8,7 @@ const FormLabel = (title: string, inputName: string): HTMLLabelElement => {
 	return element;
 };
 
-const FormSelectOption = (option: InterfaceFormSelectOption): HTMLOptionElement => {
+const FormSelectOption = (option: FormSelectOption): HTMLOptionElement => {
 	const element = document.createElement("option");
 	element.setAttribute("value", option.value);
 	element.setAttribute("label", option.label);
@@ -20,7 +20,7 @@ const FormSelectOption = (option: InterfaceFormSelectOption): HTMLOptionElement 
 	return element;
 }
 
-const FormSelect = (name: string, options: Array<InterfaceFormSelectOption>): HTMLSelectElement => {
+const FormSelect = (name: string, options: Array<FormSelectOption>): HTMLSelectElement => {
 	const element = document.createElement("select");
 	const elementOptions = options.map(option => FormSelectOption(option));
 	

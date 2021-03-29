@@ -1,6 +1,6 @@
-import { InterfaceCurrency } from "../models/Currency";
+import { Currency } from "../types/currency";
 
-const defaultCurrencies: Array<InterfaceCurrency> = [
+const defaultCurrencies: Array<Currency> = [
 	{
 		code: "USD",
 		name: "US Dollars",

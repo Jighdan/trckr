@@ -1,9 +1,9 @@
-import { InterfaceCategory } from "../../../models/Category";
-import { InterfaceFormSelectOption } from "../../../models/Form";
+import { Category } from "../../../types/category";
+import { FormSelectOption } from "../../../types/formElements";
 import { FormLabel, FormSelect } from "../../Form";
 
-const EntryFormCategory = (categories: Array<InterfaceCategory>): HTMLDivElement => {
-	const formattedCategories: Array<InterfaceFormSelectOption> = categories.map(category => ({
+const EntryFormCategory = (categories: Array<Category>): HTMLDivElement => {
+	const formattedCategories: Array<FormSelectOption> = categories.map(category => ({
 		value: category.id,
 		label: category.name,
 		isDefault: category.isDefault

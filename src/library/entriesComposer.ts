@@ -1,22 +1,26 @@
-import { InterfaceCurrency } from "../models/Currency";
-import { InterfaceEntry } from "../models/Entry";
+import { Currency } from "../types/currency";
+import { Entry } from "../types/entry";
 import { composeDate } from "./dateComposer";
 
-const formatEntriesByCurrency = (entries: Array<InterfaceEntry>, defaultCurrency: InterfaceCurrency): Array<InterfaceEntry> => (
+const getUniqueDatesFromEntries = (entries: Array<Entry>): Array<string> => {
+	const availableDates = entries.map((entry => composeDate(entry.dateAdded)));
+	const setOfUniqueDates = new Set(availableDates);
+	return new Array(...setOfUniqueDates);
+};
+
+const formatEntriesByCurrency = (entries: Array<Entry>, defaultCurrency: Currency): Array<Entry> => (
 	entries.map(entry => (
 		{
 			...entry,
 			amount: entry.amount * defaultCurrency.from[entry.currencyCode]
 		}
 	))
-)
+);
 
-const composeEntries = (entries: Array<InterfaceEntry>, defaultCurrency: InterfaceCurrency): Record<string, Array<InterfaceEntry>> => {
+const composeEntries = (entries: Array<Entry>, defaultCurrency: Currency): Record<string, Array<Entry>> => {
 	const formattedEntriesAmount = formatEntriesByCurrency(entries, defaultCurrency);
-	const composedEntriesByDate: {[ index: string ]: Array<InterfaceEntry> } = {};
-	const availableDates = entries.map((entry => composeDate(entry.dateAdded)));
-	const setOfUniqueDates = new Set(availableDates);
-	const arrayOfUniqueDates = new Array(...setOfUniqueDates);
+	const composedEntriesByDate: {[ index: string ]: Array<Entry> } = {};
+	const arrayOfUniqueDates = getUniqueDatesFromEntries(entries);
 
 	arrayOfUniqueDates.forEach(date => {
 		const formattedDate = composeDate(date);
@@ -27,4 +31,4 @@ const composeEntries = (entries: Array<InterfaceEntry>, defaultCurrency: Interfa
 	return composedEntriesByDate;
 };
 
-export { composeEntries };
+export { getUniqueDatesFromEntries, composeEntries };

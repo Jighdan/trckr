@@ -1,4 +1,4 @@
-import { InterfaceState } from "../models/State";
+import { State } from "../types/state";
 import { categories } from "./categories";
 import { defaultCurrencies } from "./defaultCurrencies";
 import { colors } from "./colors";
@@ -21,7 +21,7 @@ const defaultCategories = () => {
 	});
 };
 
-const defaultState: InterfaceState = {
+const defaultState: State = {
 	entries: [],
 	categories: defaultCategories(),
 	currencies: defaultCurrencies,

@@ -1,7 +1,7 @@
-interface InterfaceView {
+interface View {
 	name: string;
 	callback: CallableFunction;
 	default?: boolean;
 }
 
-export { InterfaceView };
+export { View };

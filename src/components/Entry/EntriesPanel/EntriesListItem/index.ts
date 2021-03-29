@@ -1,13 +1,13 @@
 
-import { InterfaceEntry } from "../../../../models/Entry";
-import { InterfaceCategory } from "../../../../models/Category";
+import { Entry } from "../../../../types/entry";
+import { Category } from "../../../../types/category";
 import { EntriesListItemName } from "./EntriesListItemName";
 import { EntriesListItemAmount } from "./EntriesListItemAmount";
 import { EntriesListItemCategoryTitle } from "./EntriesListItemCategoryTitle";
 import { EntriesListItemCategoryShape } from "./EntriesListItemCategoryShape";
 import { EntriesListItemTime } from "./EntriesListItemTime";
 
-const EntriesListItem = (entry: InterfaceEntry, category: InterfaceCategory): HTMLElement => {
+const EntriesListItem = (entry: Entry, category: Category): HTMLElement => {
 	const element = document.createElement("article");
 	const elementName = EntriesListItemName(entry.name);
 	const elementAmount = EntriesListItemAmount(entry.amount);

@@ -1,7 +1,6 @@
 import { Component } from "../Component";
 import { store } from "../../store/index";
-import { InterfaceState } from "../../models/State";
-import { InterfaceDefaultSettings } from "../../models/DefaultSettings";
+import { State } from "../../types/state";
 import { SettingCurrency } from "./SettingCurrency";
 
 class SettingsForm extends Component {
@@ -36,7 +35,7 @@ class SettingsForm extends Component {
 		store.commit("setDefaultCurrency", settings);
 	}
 
-	setSettingElements(state: InterfaceState): void {
+	setSettingElements(state: State): void {
 		const settingCurrency = SettingCurrency(state.currencies);
 
 		this.settingsBoxElement.innerHTML = "";

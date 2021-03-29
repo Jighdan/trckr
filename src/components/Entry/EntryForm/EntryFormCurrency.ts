@@ -1,9 +1,9 @@
-import { InterfaceCurrency } from "../../../models/Currency";
-import { InterfaceFormSelectOption } from "../../../models/Form";
+import { Currency } from "../../../types/currency";
+import { FormSelectOption } from "../../../types/formElements";
 import { FormLabel, FormSelect } from "../../Form";
 
-const EntryFormCurrency = (currencies: Array<InterfaceCurrency>): HTMLDivElement => {
-	const formattedCurrencies: Array<InterfaceFormSelectOption> = currencies.map(currency => ({
+const EntryFormCurrency = (currencies: Array<Currency>): HTMLDivElement => {
+	const formattedCurrencies: Array<FormSelectOption> = currencies.map(currency => ({
 		value: currency.code,
 		label: currency.code,
 		isDefault: currency.default,

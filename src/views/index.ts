@@ -1,4 +1,4 @@
-import { InterfaceView } from "../models/View";
+import { View } from "../types/view";
 import { ViewHome } from "./ViewHome";
 import { ViewSettings } from "./ViewSettings";
 
@@ -6,7 +6,7 @@ const appRoot: HTMLElement = document.getElementById("appRoot");
 const viewsRoot: HTMLHeadElement = document.getElementById("viewsRoot");
 let currentView = "";
 
-const allViews: Array<InterfaceView> = [
+const allViews: Array<View> = [
 	{
 		name: "Home",
 		callback: ViewHome,
@@ -23,7 +23,7 @@ const removeClassFromAllViews = (className: string): void => {
 	allViews.forEach((viewElement: HTMLHeadingElement) => viewElement.classList.remove(className));
 };
 
-const setCurrentView = (view: InterfaceView, element: HTMLHeadingElement): void => {
+const setCurrentView = (view: View, element: HTMLHeadingElement): void => {
 	if (view.name !== currentView) {
 		removeClassFromAllViews("view-active");
 		element.classList.add("view-active");
@@ -34,7 +34,7 @@ const setCurrentView = (view: InterfaceView, element: HTMLHeadingElement): void 
 	}
 }
 
-const composeViewElement = (view: InterfaceView): HTMLHeadingElement => {
+const composeViewElement = (view: View): HTMLHeadingElement => {
 	const element = document.createElement("h2");
 	element.classList.add("view");
 	element.innerText = view.name;

@@ -1,14 +1,14 @@
 import { EventObserver } from "../library/eventObserver";
-import { InterfaceState } from "../models/State";
+import { State } from "../types/state";
 
 class Store {
-	state: InterfaceState;
+	state: State;
 	mutations: {[index: string]:any};
 	getters: {[index: string]:any};
 	actions: {[index: string]:any};
 	events: EventObserver;
 
-	constructor(state: InterfaceState, mutations: Record<string, unknown>, getters: Record<string, unknown>, actions: Record<string, unknown>) {
+	constructor(state: State, mutations: Record<string, unknown>, getters: Record<string, unknown>, actions: Record<string, unknown>) {
 		this.state = state;
 		this.mutations = mutations;
 		this.actions = actions;
