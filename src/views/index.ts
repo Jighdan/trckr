@@ -34,7 +34,7 @@ const setCurrentView = (view: View, element: HTMLHeadingElement): void => {
 	}
 }
 
-const composeViewElement = (view: View): HTMLHeadingElement => {
+const composeViewLinkElement = (view: View): HTMLHeadingElement => {
 	const element = document.createElement("h2");
 	element.classList.add("view");
 	element.innerText = view.name;
@@ -46,7 +46,7 @@ const composeViewElement = (view: View): HTMLHeadingElement => {
 const initializeViews = (): void => {
 	window.addEventListener("DOMContentLoaded", () => {
 		viewsRoot.append(...allViews.map(view => {
-			const element = composeViewElement(view);
+			const element = composeViewLinkElement(view);
 
 			if (view?.default) {
 				setCurrentView(view, element);
