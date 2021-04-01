@@ -9,6 +9,8 @@ class EntriesPanel extends Component {
 	}
 
 	render = (): HTMLElement => {
+		this.element.innerHTML = "";
+
 		const entries = store.getter("allEntriesByDate");
 		const entriesListElement = EntriesList(entries);
 

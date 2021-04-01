@@ -1,33 +1,46 @@
-label,
-legend {
-	font-size: $font-sm;
-	color: $color-gray;
-}
-
-input,
-select {
-	height: 2.5rem;
-	padding: 0.5rem 0.75rem;
-	font-weight: bold;
-	color: $color-black;
-	border: 2px solid $color-white-light;
-	outline: none;
-	background-color: $color-white-light;
-	border-radius: 5px;
-	cursor: pointer;
-
-	&:active,
-	&:focus {
-		outline: none;
-		border-color: $color-black;
+form {
+	label,
+	legend {
+		font-size: $font-sm;
+		color: $color-gray;
 	}
-}
 
-fieldset {
-	border: none;
-	outline: none;
-}
+	legend {
+		font-weight: bold;
+	}
 
-::placeholder {
-	color: $color-black;
+	input,
+	select {
+		height: 2.5rem;
+		padding: 0.5rem 0.75rem;
+		font-weight: bold;
+		color: $color-black;
+		border: 2px solid $color-white-light;
+		outline: none;
+		background-color: $color-white-light;
+		border-radius: 5px;
+		cursor: pointer;
+
+		&:active,
+		&:focus {
+			outline: none;
+			border-color: $color-black;
+		}
+	}
+
+	fieldset {
+		border: none;
+		outline: none;
+	}
+
+	.form-control {
+		display: flex;
+		flex-direction: column;
+		border: none;
+		outline: none;
+	}
+
+	::placeholder {
+		color: $color-black;
+	}
 }

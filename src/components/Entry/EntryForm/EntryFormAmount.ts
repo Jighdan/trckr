@@ -13,7 +13,7 @@ const EntryFormAmount = (): HTMLDivElement => {
 	elementInput.setAttribute("step", "any");
 	elementInput.setAttribute("required", "true");
 
-	element.classList.add("entry-form-control", "entry-form-amount");
+	element.classList.add("form-control", "entry-form-amount");
 	element.append(elementLabel, elementInput);
 
 

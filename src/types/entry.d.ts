@@ -1,4 +1,4 @@
-interface InterfaceEntry {
+interface Entry {
 	id: string;
 	name: string;
 	amount: number;
@@ -7,4 +7,4 @@ interface InterfaceEntry {
 	categoryId: string;
 }
 
-export { InterfaceEntry };
+export { Entry };

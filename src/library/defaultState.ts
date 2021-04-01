@@ -1,4 +1,4 @@
-import { InterfaceState } from "../models/State";
+import { State } from "../types/state";
 import { categories } from "./categories";
 import { defaultCurrencies } from "./defaultCurrencies";
 import { colors } from "./colors";
@@ -9,17 +9,19 @@ const defaultCategories = () => {
 		const id = generateId();
 		const color = colors[categories.indexOf(category)];
 		const icon = `./assets/icons/${category.icon}`;
+		const isDefault = category.name === "Other" ? true : false;
 
 		return {
 			id,
 			name: category.name,
 			color,
-			icon
+			icon,
+			isDefault
 		}
 	});
 };
 
-const defaultState: InterfaceState = {
+const defaultState: State = {
 	entries: [],
 	categories: defaultCategories(),
 	currencies: defaultCurrencies,

@@ -1,6 +1,6 @@
-import { InterfaceState } from "../models/State";
+import { State } from "../types/state";
 
-const state: InterfaceState = {
+const state: State = {
 	entries: [],
 	categories: [],
 	currencies: [],

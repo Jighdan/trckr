@@ -1,8 +1,9 @@
-interface InterfaceCategory {
+interface Category {
 	id: string;
 	name: string;
 	color: string;
 	icon: string;
+	isDefault?: boolean;
 }
 
-export { InterfaceCategory }
+export { Category }

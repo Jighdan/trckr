@@ -1,10 +1,10 @@
 import { Component } from "../../Component";
 import { store } from "../../../store/index";
-import { InterfaceEntry } from "../../../models/Entry";
+import { Entry } from "../../../types/entry";
 import { EntriesListItem } from "./EntriesListItem/index";
 
 class EntriesListSection extends Component {
-	constructor(date: string, entries: Array<InterfaceEntry>) {
+	constructor(date: string, entries: Array<Entry>) {
 		super(document.createElement("section"), null, true);
 
 		// Setting up section attributes

@@ -1,31 +1,22 @@
-import { InterfaceCategory } from "../../../models/Category";
-import { FormLabel } from "../../Form";
+import { Category } from "../../../types/category";
+import { FormSelectOption } from "../../../types/formElements";
+import { FormLabel, FormSelect } from "../../Form";
 
-const EntryFormCategoryOption = (category: InterfaceCategory): HTMLOptionElement => {
-	const element = document.createElement("option");
-	element.setAttribute("label", category.name);
-	element.setAttribute("value", category.id);
-	element.innerText = category.name;
+const EntryFormCategory = (categories: Array<Category>): HTMLDivElement => {
+	const formattedCategories: Array<FormSelectOption> = categories.map(category => ({
+		value: category.id,
+		label: category.name,
+		isDefault: category.isDefault
+	}));
 
-	if (category.name === "Other") {
-		element.setAttribute("selected", "true");
-	}
-
-	return element;
-};
-
-
-const EntryFormCategory = (categories: Array<InterfaceCategory>): HTMLDivElement => {
 	const element = document.createElement("div");
-	const elementLabel = FormLabel("Category", "entryCategory");
-	const elementSelect = document.createElement("select");
-	const elementSelectOptions = categories.map(category => EntryFormCategoryOption(category));
+	const elementName = "entryCategory";
+	const elementLabel = FormLabel("Category", elementName);
+	const elementSelect = FormSelect(elementName, formattedCategories);
 
-	elementSelect.setAttribute("name", "entryCategory");
 	elementSelect.setAttribute("required", "true");
-	elementSelect.append(...elementSelectOptions);
 
-	element.classList.add("entry-form-control", "entry-form-category");
+	element.classList.add("form-control", "entry-form-category");
 	element.append(elementLabel, elementSelect);
 
 	return element;
