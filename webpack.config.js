@@ -4,7 +4,7 @@ module.exports = {
 	entry: "./src/index.ts",
 	output: {
 		filename: "script.js",
-		path: path.resolve(__dirname, "build"),
+		path: path.resolve(__dirname, "static"),
 	},
 	devtool: "inline-source-map",
 	mode: process.env.NODE_ENV === "production" ? "production" : "development",
